@@ -23,5 +23,7 @@ select * from teacher;
 alter table teacher add gender_teacher text;
 
 set sql_safe_updates =0;
-update 
+update teacher set gender_teacher = "Nam"
+where name_teacher = "Trung";
+set sql_safe_updates =1;
 
