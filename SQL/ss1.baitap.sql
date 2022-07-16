@@ -1,29 +1,46 @@
+drop database if exists student_management;
+
 create database student_management;
 use student_management;
-create table class (
-id_class int auto_increment,
-name_class varchar(45),
-primary key (id_class)
+
+CREATE TABLE class (
+    id_class INT AUTO_INCREMENT,
+    name_class VARCHAR(45),
+    PRIMARY KEY (id_class)
 );
 
-insert into class(name_class) values("C04"),("C01"),("C02");
-select * from class;
+insert into class(name_class)
+values("C04"),("C01"),("C02");
+SELECT 
+    *
+FROM
+    class;
 
-create table teacher (
-id_teacher int auto_increment,
-name_teacher varchar(55),
-date_of_birth date,
-country varchar(45),
-primary key (id_teacher)
+CREATE TABLE teacher (
+    id_teacher INT AUTO_INCREMENT,
+    name_teacher VARCHAR(55),
+    date_of_birth DATE,
+    country VARCHAR(45),
+    PRIMARY KEY (id_teacher)
 );
 
-insert into teacher(name_teacher,date_of_birth,country) values("Trung","1990-09-20","India"),
-("Dũng","1980-09-25","America"),("Hoàng","1995-07-15","Việt Nam");
-select * from teacher;
-alter table teacher add gender_teacher text;
+insert into teacher(name_teacher,date_of_birth,country)
+values ("Trung","1990-09-20","India"),
+	("Dũng","1980-09-25","America"),
+    ("Hoàng","1995-07-15","Việt Nam");
+
+SELECT 
+    *
+FROM
+    teacher;
+alter table teacher
+add gender_teacher text;
 
 set sql_safe_updates =0;
-update teacher set gender_teacher = "Nam"
-where name_teacher = "Trung";
+UPDATE teacher 
+SET 
+    gender_teacher = 'Nam'
+WHERE
+    name_teacher = 'Trung';
 set sql_safe_updates =1;
 

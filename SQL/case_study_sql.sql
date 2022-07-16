@@ -76,14 +76,14 @@ CREATE TABLE dich_vu (
     ma_dich_vu INT AUTO_INCREMENT,
     ten_dich_vu VARCHAR(45) NOT NULL,
     dien_tich INT NOT NULL,
-    chi_phi_thue DOUBLE NOT NULL,
+    chi_phi_thue DOUBLE NOT NULL DEFAULT 0,
     so_nguoi_toi_da INT NOT NULL,
     tieu_chuan_phong VARCHAR(45) NOT NULL,
     mo_ta_tien_nghi_khac VARCHAR(45) NOT NULL,
     dien_tich_ho_boi DOUBLE,
     so_tang INT,
     dich_vu_mien_phi_di_kem TEXT,
-	ma_kieu_thue INT NOT NULL,
+    ma_kieu_thue INT NOT NULL,
     ma_loai_dich_vu INT NOT NULL,
     PRIMARY KEY (ma_dich_vu),
     FOREIGN KEY (ma_kieu_thue)
@@ -95,7 +95,7 @@ CREATE TABLE dich_vu (
 CREATE TABLE dich_vu_di_kem (
     ma_dich_vu_di_kem INT NOT NULL,
     ten_dich_vu_di_kem VARCHAR(45) NOT NULL,
-    gia DOUBLE NOT NULL,
+    gia DOUBLE NOT NULL DEFAULT 0,
     don_vi VARCHAR(10) NOT NULL,
     trang_thai VARCHAR(45) NOT NULL,
     PRIMARY KEY (ma_dich_vu_di_kem)
@@ -122,7 +122,7 @@ CREATE TABLE hop_dong_chi_tiet (
     ma_hop_dong_chi_tiet INT NOT NULL UNIQUE,
     ma_hop_dong INT NOT NULL,
     ma_dich_vu_di_kem INT NOT NULL,
-    so_luong INT NOT NULL,
+    so_luong INT NOT NULL DEFAULT 0,
     PRIMARY KEY (ma_hop_dong_chi_tiet),
     FOREIGN KEY (ma_hop_dong)
         REFERENCES hop_dong (ma_hop_dong),
@@ -227,6 +227,148 @@ VALUES ("1", "5", "2", "4"),
 ("6", "1", "1", "3"),
 ("7", "2", "1", "2"),
 ("8", "2", "12", "2");
+
+-- 2. ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự --
+SELECT 
+    *
+FROM
+    nhan_vien
+WHERE
+    ho_ten REGEXP '^[HTK]'
+        AND CHAR_LENGTH(ho_ten) <= 15 ;
+        
+        -- tuổi từ 18 đến 50 tuổi và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị” --
+SELECT 
+    *
+FROM
+    khach_hang
+WHERE (YEAR(CURDATE()) - YEAR(ngay_sinh) BETWEEN 18 AND 50)
+AND (dia_chi LIKE "%Đà Nẵng" OR dia_chi LIKE "%Quảng Trị") ;
+
+-- 4.đếm những khách hàng nào có Tên loại khách hàng là “Diamond” --
+SELECT 
+    khach_hang.ma_khach_hang AS ma_khach_hang,
+    khach_hang.ho_ten AS ho_ten,
+    COUNT(hop_dong.ma_hop_dong) AS so_lan_dat_phong
+FROM
+    khach_hang
+        JOIN
+    hop_dong ON hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+        JOIN
+    loai_khach ON khach_hang.ma_loai_khach = loai_khach.ma_loai_khach
+WHERE
+    ten_loai_khach = 'Diamond'
+GROUP BY khach_hang.ho_ten
+ORDER BY COUNT(hop_dong.ma_hop_dong);
+
+-- 5.Tổng tiền --
+SELECT 
+    kh.ma_khach_hang AS ma_khach_hang,
+    kh.ho_ten AS ho_ten,
+    lk.ten_loai_khach AS ten_loai_khach,
+    hd.ma_hop_dong AS ma_hop_dong,
+    dv.ten_dich_vu AS ten_dich_vu,
+    hd.ngay_lam_hop_dong AS ngay_lam_hop_dong,
+    hd.ngay_ket_thuc AS ngay_ket_thuc,
+    SUM(chi_phi_thue + so_luong * gia) AS tong_tien
+FROM
+    khach_hang kh
+        JOIN
+    loai_khach lk ON lk.ma_loai_khach = kh.ma_loai_khach
+        LEFT JOIN
+    hop_dong hd ON hd.ma_khach_hang = kh.ma_khach_hang
+        LEFT JOIN
+    dich_vu dv ON hd.ma_dich_vu = dv.ma_dich_vu
+        LEFT JOIN
+    hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+        LEFT JOIN
+    dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+GROUP BY hd.ma_hop_dong;
+
+
+-- 6.quý 1 của năm 2021 (Quý 1 là tháng 1, 2, 3) --
+SELECT 
+    ma_dich_vu,
+    ten_dich_vu,
+    dien_tich,
+    chi_phi_thue,
+    ten_loai_dich_vu
+FROM
+    dich_vu
+        JOIN
+    loai_dich_vu ON loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
+        AND ma_dich_vu NOT IN 
+        (SELECT 
+            ma_dich_vu
+        FROM
+            hop_dong
+        WHERE
+            QUARTER(ngay_lam_hop_dong) = 1);
+            
+-- 7.trong năm 2020 nhưng chưa từng được khách hàng đặt phòng trong năm 2021 --
+SELECT 
+    dv.ma_dich_vu,
+    ten_dich_vu,
+    dien_tich,
+    so_nguoi_toi_da,
+    chi_phi_thue,
+    ten_loai_dich_vu
+FROM
+    dich_vu dv
+        JOIN
+    loai_dich_vu ldv ON dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu
+        JOIN
+    hop_dong hd ON dv.ma_dich_vu = hd.ma_dich_vu
+WHERE
+    YEAR(ngay_lam_hop_dong) = 2020
+        AND hd.ma_dich_vu NOT IN (SELECT 
+            ma_dich_vu
+        FROM
+            hop_dong
+        WHERE
+            YEAR(ngay_lam_hop_dong) = 2021)
+GROUP BY hd.ma_dich_vu;
+
+-- 8.Học viên sử dụng theo 3 cách khác nhau để thực hiện yêu cầu tên không trùng nhau --
+-- c1 --
+SELECT 
+    ho_ten
+FROM
+    khach_hang
+GROUP BY ho_ten;
+
+
+-- c2 --
+select distinct ho_ten from khach_hang;
+
+-- c3 --
+select ho_ten from khach_hang
+group by ho_ten
+having count(ho_ten) >= 1;
+
+-- 9.trong năm 2021 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng --
+SELECT 
+    MONTH(ngay_lam_hop_dong) AS `month`, COUNT(ma_hop_dong)
+FROM
+    hop_dong
+WHERE
+    YEAR(ngay_lam_hop_dong) = 2021
+GROUP BY `month`
+ORDER BY `month`;
+
+-- 10.Hiển thị hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm --
+
+SELECT 
+    hd.ma_hop_dong,
+    ngay_lam_hop_dong,
+    ngay_ket_thuc,
+    tien_dat_coc,
+    SUM(so_luong) AS so_luong_dich_vu_di_kem
+FROM
+    hop_dong hd
+        LEFT JOIN
+    hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+GROUP BY hd.ma_hop_dong;
 
 
 
