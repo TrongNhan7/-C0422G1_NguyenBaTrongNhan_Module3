@@ -262,6 +262,7 @@ GROUP BY khach_hang.ho_ten
 ORDER BY COUNT(hop_dong.ma_hop_dong);
 
 -- 5.Tổng tiền --
+
 SELECT 
     kh.ma_khach_hang AS ma_khach_hang,
     kh.ho_ten AS ho_ten,
@@ -270,7 +271,7 @@ SELECT
     dv.ten_dich_vu AS ten_dich_vu,
     hd.ngay_lam_hop_dong AS ngay_lam_hop_dong,
     hd.ngay_ket_thuc AS ngay_ket_thuc,
-    SUM(chi_phi_thue + so_luong * gia) AS tong_tien
+    SUM(chi_phi_thue + ifnull(so_luong * gia,0)) AS tong_tien
 FROM
     khach_hang kh
         JOIN
@@ -339,12 +340,23 @@ GROUP BY ho_ten;
 
 
 -- c2 --
-select distinct ho_ten from khach_hang;
+SELECT DISTINCT
+    ho_ten
+FROM
+    khach_hang;
 
 -- c3 --
-select ho_ten from khach_hang
-group by ho_ten
-having count(ho_ten) >= 1;
+SELECT 
+    ho_ten
+FROM
+    khach_hang
+WHERE
+    ho_ten NOT IN (SELECT 
+            ho_ten
+        FROM
+            khach_hang
+        GROUP BY ho_ten
+        HAVING COUNT(ho_ten) > 1);
 
 -- 9.trong năm 2021 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng --
 SELECT 
@@ -369,6 +381,103 @@ FROM
         LEFT JOIN
     hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
 GROUP BY hd.ma_hop_dong;
+
+-- 11.ten_loai_khach là “Diamond” và có dia_chi ở “Vinh” hoặc “Quảng Ngãi” --
+ 
+ SELECT 
+    dvdk.ma_dich_vu_di_kem, ten_dich_vu_di_kem
+FROM
+    khach_hang kh
+        JOIN
+    loai_khach lk ON kh.ma_loai_khach = lk.ma_loai_khach
+        JOIN
+    hop_dong hd ON kh.ma_khach_hang = hd.ma_khach_hang
+        JOIN
+    hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+        JOIN
+    dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+WHERE
+    ten_loai_khach = 'Diamond'
+        AND (dia_chi LIKE '%Vinh'
+        OR dia_chi LIKE '%Quảng Ngãi');
+        
+-- 12.tien_dat_coc của tất cả các dịch vụ đã từng được khách hàng --
+-- đặt vào 3 tháng cuối năm 2020 nhưng chưa từng được khách hàng đặt vào 6 tháng đầu năm 2021. --
+
+SELECT 
+    hop_dong.ma_hop_dong,
+    nhan_vien.ho_ten AS ho_ten_nhan_vien,
+    khach_hang.ho_ten AS ho_ten_khach_hang,
+    khach_hang.so_dien_thoai,
+    dich_vu.ten_dich_vu,
+    SUM(so_luong) AS so_luong_dich_vu_di_kem,
+    tien_dat_coc
+FROM
+    khach_hang
+        INNER JOIN
+    hop_dong ON khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+        JOIN
+    dich_vu ON hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+        LEFT JOIN
+    hop_dong_chi_tiet ON hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_dong
+        JOIN
+    nhan_vien ON hop_dong.ma_nhan_vien = nhan_vien.ma_nhan_vien
+        AND YEAR(ngay_lam_hop_dong) = 2020
+        AND QUARTER(ngay_lam_hop_dong) = 4
+        AND hop_dong.ma_dich_vu NOT IN (SELECT 
+            hop_dong.ma_dich_vu
+        FROM
+            hop_dong
+        WHERE
+            YEAR(ngay_lam_hop_dong) = 2021
+                AND (QUARTER(ngay_lam_hop_dong) = 1
+                OR QUARTER(ngay_lam_hop_dong) = 2))
+GROUP BY khach_hang.ma_khach_hang;
+
+-- 13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng -- 
+SELECT 
+    dich_vu_di_kem.ma_dich_vu_di_kem,
+    ten_dich_vu_di_kem,
+    SUM(so_luong) AS so_luong_dich_vu_di_kem
+FROM
+    dich_vu
+        INNER JOIN
+    hop_dong ON hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+        INNER JOIN
+    hop_dong_chi_tiet hdct ON hdct.ma_hop_dong = hop_dong.ma_hop_dong
+        INNER JOIN
+    dich_vu_di_kem ON dich_vu_di_kem.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
+GROUP BY ten_dich_vu_di_kem
+HAVING so_luong_dich_vu_di_kem >= (SELECT 
+        SUM(so_luong)
+    FROM
+        hop_dong_chi_tiet
+    GROUP BY ma_dich_vu_di_kem
+    ORDER BY SUM(so_luong) DESC
+    LIMIT 1);
+    
+
+-- 14.Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất -- 
+SELECT 
+    hd.ma_hop_dong,
+    ten_loai_dich_vu,
+    ten_dich_vu_di_kem,
+    COUNT(dvdk.ma_dich_vu_di_kem) AS so_lan_su_dung
+FROM
+    hop_dong hd
+        JOIN
+    dich_vu dv ON hd.ma_dich_vu = dv.ma_dich_vu
+        JOIN
+    loai_dich_vu ldv ON dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu
+        JOIN
+    hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+        JOIN
+    dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+GROUP BY ten_dich_vu_di_kem
+HAVING COUNT(dvdk.ma_dich_vu_di_kem) = 1;
+
+-- 
+
 
 
 
