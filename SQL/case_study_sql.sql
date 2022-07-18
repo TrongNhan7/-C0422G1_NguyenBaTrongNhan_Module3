@@ -31,6 +31,7 @@ CREATE TABLE nhan_vien (
     ma_vi_tri INT NOT NULL,
     ma_trinh_do INT NOT NULL,
     ma_bo_phan INT NOT NULL,
+    `status` BIT(1) DEFAULT 0,
     PRIMARY KEY (ma_nhan_vien),
     FOREIGN KEY (ma_vi_tri)
         REFERENCES vi_tri (ma_vi_tri),
@@ -60,6 +61,7 @@ CREATE TABLE khach_hang (
     email VARCHAR(45) NOT NULL UNIQUE,
     dia_chi VARCHAR(45) NOT NULL,
     ma_loai_khach INT NOT NULL,
+    `status` BIT(1) DEFAULT 0,
     PRIMARY KEY (ma_khach_hang),
     FOREIGN KEY (ma_loai_khach)
         REFERENCES loai_khach (ma_loai_khach)
@@ -113,7 +115,7 @@ CREATE TABLE hop_dong (
     PRIMARY KEY (ma_hop_dong),
     FOREIGN KEY (ma_nhan_vien)
         REFERENCES nhan_vien (ma_nhan_vien),
-    FOREIGN KEY (ma_khach_hang)
+    CONSTRAINT fk_ma_khach_hang FOREIGN KEY (ma_khach_hang)
         REFERENCES khach_hang (ma_khach_hang),
     FOREIGN KEY (ma_dich_vu)
         REFERENCES dich_vu (ma_dich_vu)
@@ -166,16 +168,16 @@ values ("1","Diamond"),
 	("5","Member");
     
 INSERT INTO khach_hang(ho_ten, ngay_sinh, gioi_tinh, so_cmnd, so_dien_thoai, email, dia_chi, ma_loai_khach)
-VALUES ("Nguyễn Thị Hào", "1970-11-07", 0, "643431213", "0945423362", "thihao07@gmail.com", "23 Nguyễn Hoàng, Đà Nẵng", "5"),
-("Phạm Xuân Diệu", "1992-08-08", 1, "865342123", "0954333333", "xuandieu92@gmail.com", "K77/22 Thái Phiên, Quảng Trị", "3"),
-("Trương Đình Nghệ", "1990-02-27", 1, "488645199", "0373213122", "nghenhan2702@gmail.com", "K323/12 Ông Ích Khiêm, Vinh", "1"),
-("Dương Văn Quan", "1981-07-08", 1, "543432111", "0490039241", "duongquan@gmail.com", "K453/12 Lê Lợi, Đà Nẵng", "1"),
-("Hoàng Trần Nhi Nhi", "1995-12-09", 0, "795453345", "0312345678", "nhinhi123@gmail.com", "224 Lý Thái Tổ, Gia Lai", "4"),
-("Tôn Nữ Mộc Châu", "2005-12-06", 0, "732434215", "0988888844", "tonnuchau@gmail.com", "37 Yên Thế, Đà Nẵng", "4"),
-("Nguyễn Mỹ Kim", "1984-04-08", 0, "856453123", "0912345698", "kimcuong84@gmail.com", "K123/45 Lê Lợi, Hồ Chí Minh", "1"),
-("Nguyễn Thị Hào", "1999-04-08", 0, "965656433", "0763212345", "haohao99@gmail.com", "55 Nguyễn Văn Linh, Kon Tum", "3"),
-("Trần Đại Danh", "1994-07-01", 1, "432341235", "0643343433", "danhhai99@gmail.com", "24 Lý Thường Kiệt, Quảng Ngãi", "1"),
-("Nguyễn Tâm Đắc", "1989-07-01", 1, "344343432", "0987654321", "dactam@gmail.com", "22 Ngô Quyền, Đà Nẵng", "2");
+VALUES ("Nguyễn Thị Hào", "1970-11-07", 0, "643431213", "0945423362", "thihao07@gmail.com", "23 Nguyễn Hoàng, Đà Nẵng", 5),
+("Phạm Xuân Diệu", "1992-08-08", 1, "865342123", "0954333333", "xuandieu92@gmail.com", "K77/22 Thái Phiên, Quảng Trị", 3),
+("Trương Đình Nghệ", "1990-02-27", 1, "488645199", "0373213122", "nghenhan2702@gmail.com", "K323/12 Ông Ích Khiêm, Vinh", 1),
+("Dương Văn Quan", "1981-07-08", 1, "543432111", "0490039241", "duongquan@gmail.com", "K453/12 Lê Lợi, Đà Nẵng", 1),
+("Hoàng Trần Nhi Nhi", "1995-12-09", 0, "795453345", "0312345678", "nhinhi123@gmail.com", "224 Lý Thái Tổ, Gia Lai", 4),
+("Tôn Nữ Mộc Châu", "2005-12-06", 0, "732434215", "0988888844", "tonnuchau@gmail.com", "37 Yên Thế, Đà Nẵng", 4),
+("Nguyễn Mỹ Kim", "1984-04-08", 0, "856453123", "0912345698", "kimcuong84@gmail.com", "K123/45 Lê Lợi, Hồ Chí Minh", 1),
+("Nguyễn Thị Hào", "1999-04-08", 0, "965656433", "0763212345", "haohao99@gmail.com", "55 Nguyễn Văn Linh, Kon Tum", 3),
+("Trần Đại Danh", "1994-07-01", 1, "432341235", "0643343433", "danhhai99@gmail.com", "24 Lý Thường Kiệt, Quảng Ngãi", 1),
+("Nguyễn Tâm Đắc", "1989-07-01", 1, "344343432", "0987654321", "dactam@gmail.com", "22 Ngô Quyền, Đà Nẵng", 2);
 
 insert into kieu_thue(ma_kieu_thue,ten_kieu_thue)
 values ("1","year"),
@@ -184,9 +186,9 @@ values ("1","year"),
 	("4","hour");
     
 insert into loai_dich_vu(ma_loai_dich_vu,ten_loai_dich_vu)
-values ("1","Villa"),
-	("2","House"),
-	("3","Room");
+values (1,"Villa"),
+	(2,"House"),
+	(3,"Room");
 
 INSERT INTO  dich_vu(ten_dich_vu, dien_tich, chi_phi_thue, so_nguoi_toi_da, tieu_chuan_phong, mo_ta_tien_nghi_khac, dien_tich_ho_boi, so_tang, dich_vu_mien_phi_di_kem, ma_kieu_thue, ma_loai_dich_vu)
 VALUES ("Villa Beach Front", 25000, "1000000", "10", "vip", "Có hồ bơi", 500, 4, null, "3", "1"),
@@ -416,11 +418,11 @@ FROM
     khach_hang
         INNER JOIN
     hop_dong ON khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
-        JOIN
+       INNER JOIN
     dich_vu ON hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
         LEFT JOIN
     hop_dong_chi_tiet ON hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_dong
-        JOIN
+        INNER JOIN
     nhan_vien ON hop_dong.ma_nhan_vien = nhan_vien.ma_nhan_vien
         AND YEAR(ngay_lam_hop_dong) = 2020
         AND QUARTER(ngay_lam_hop_dong) = 4
@@ -503,11 +505,117 @@ FROM
         WHERE
             YEAR(ngay_lam_hop_dong) BETWEEN 2020 AND 2021
         GROUP BY ma_nhan_vien
-        HAVING COUNT(ma_hop_dong) <= 3)
+        HAVING COUNT(ma_hop_dong) <= 3);
+        
+-- 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021 --
+set sql_safe_updates =0;
+ update nhan_vien
+ set `status` = 1
+WHERE
+    nhan_vien.ma_nhan_vien NOT IN (SELECT 
+        ma_nhan_vien
+    FROM
+        hop_dong
+    
+    WHERE
+        YEAR(ngay_lam_hop_dong) BETWEEN 2019 AND 2021
+    GROUP BY ma_nhan_vien);
+    set sql_safe_updates =1;
+    select * from nhan_vien where `status` =1;
+    
 
+-- 17.	Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond,
+-- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ --
+set sql_safe_updates =0;
+update khach_hang
+set ma_loai_khach = 1
+where ma_loai_khach = 2
+and ma_khach_hang in (select temp.ma_khach_hang from
+(select kh.ma_khach_hang from
+    khach_hang kh
+        JOIN
+    loai_khach lk ON lk.ma_loai_khach = kh.ma_loai_khach
+        LEFT JOIN
+    hop_dong hd ON hd.ma_khach_hang = kh.ma_khach_hang
+        LEFT JOIN
+    dich_vu dv ON hd.ma_dich_vu = dv.ma_dich_vu
+        LEFT JOIN
+    hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+        LEFT JOIN
+    dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+GROUP BY kh.ma_khach_hang
+having SUM(chi_phi_thue + ifnull( so_luong * gia,0)) > 1000000) temp );
+ set sql_safe_updates =1;
+ 
+ -- 18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng). --
+ SELECT 
+    *
+FROM
+    khach_hang;
+ 
+ set sql_safe_updates =0;
+UPDATE khach_hang 
+SET 
+    `status` = 1
+WHERE
+    khach_hang.ma_khach_hang IN (SELECT 
+            ma_khach_hang
+        FROM
+            hop_dong
+        WHERE
+            YEAR(ngay_lam_hop_dong) < 2021);
+ set sql_safe_updates =1;
 
+SELECT 
+    *
+FROM
+    khach_hang
+WHERE
+    `status` = 1;
 
-
+-- 19	Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi. --
+SELECT 
+    *
+FROM
+    dich_vu_di_kem;
+ set sql_safe_updates =0;
+UPDATE dich_vu_di_kem 
+SET 
+    gia = gia * 2
+WHERE
+    ma_dich_vu_di_kem IN (SELECT 
+            ma_dich_vu_di_kem
+        FROM
+            hop_dong_chi_tiet hdct
+                INNER JOIN
+            hop_dong ON hdct.ma_hop_dong = hop_dong.ma_hop_dong
+                AND YEAR(ngay_lam_hop_dong) = 2020
+        GROUP BY ma_dich_vu_di_kem
+        HAVING SUM(so_luong) > 10);
+ set sql_safe_updates =1;
+ 
+ -- 20.	Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống,
+ -- thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi --
+SELECT 
+    ma_khach_hang AS id,
+    ho_ten,
+    email,
+    so_dien_thoai,
+    ngay_sinh,
+    dia_chi
+FROM
+    khach_hang 
+UNION ALL SELECT 
+    ma_nhan_vien,
+    ho_ten,
+    email,
+    so_dien_thoai,
+    ngay_sinh,
+    dia_chi
+FROM
+    nhan_vien;
+ 
+ 
 
 
 
