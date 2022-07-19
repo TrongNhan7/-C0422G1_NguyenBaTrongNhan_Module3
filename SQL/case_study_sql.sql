@@ -31,7 +31,7 @@ CREATE TABLE nhan_vien (
     ma_vi_tri INT NOT NULL,
     ma_trinh_do INT NOT NULL,
     ma_bo_phan INT NOT NULL,
-    `status` BIT(1) DEFAULT 0,
+--     `status` BIT(1) DEFAULT 0,
     PRIMARY KEY (ma_nhan_vien),
     FOREIGN KEY (ma_vi_tri)
         REFERENCES vi_tri (ma_vi_tri),
@@ -61,7 +61,7 @@ CREATE TABLE khach_hang (
     email VARCHAR(45) NOT NULL UNIQUE,
     dia_chi VARCHAR(45) NOT NULL,
     ma_loai_khach INT NOT NULL,
-    `status` BIT(1) DEFAULT 0,
+ --    `status` BIT(1) DEFAULT 0,
     PRIMARY KEY (ma_khach_hang),
     FOREIGN KEY (ma_loai_khach)
         REFERENCES loai_khach (ma_loai_khach)
@@ -508,20 +508,42 @@ FROM
         HAVING COUNT(ma_hop_dong) <= 3);
         
 -- 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021 --
-set sql_safe_updates =0;
- update nhan_vien
- set `status` = 1
+-- set sql_safe_updates =0;
+--  update nhan_vien
+--  set `status` = 1
+-- WHERE
+--     nhan_vien.ma_nhan_vien NOT IN (SELECT 
+--         ma_nhan_vien
+--     FROM
+--         hop_dong
+--     
+--     WHERE
+--         YEAR(ngay_lam_hop_dong) BETWEEN 2019 AND 2021
+--     GROUP BY ma_nhan_vien);
+--     set sql_safe_updates =1;
+--     select * from nhan_vien where `status` =1;
+
+set sql_safe_updates = 0;
+DELETE FROM nhan_vien 
 WHERE
-    nhan_vien.ma_nhan_vien NOT IN (SELECT 
-        ma_nhan_vien
+    ma_nhan_vien NOT IN (SELECT 
+        temp.ma_nhan_vien
     FROM
-        hop_dong
-    
-    WHERE
-        YEAR(ngay_lam_hop_dong) BETWEEN 2019 AND 2021
-    GROUP BY ma_nhan_vien);
+        (SELECT 
+            nhan_vien.ma_nhan_vien
+        FROM
+            hop_dong
+        LEFT JOIN nhan_vien ON nhan_vien.ma_nhan_vien = hop_dong.ma_nhan_vien
+        
+        WHERE
+            YEAR(ngay_lam_hop_dong) IN (2020 , 2021)
+        GROUP BY ma_nhan_vien) temp);
     set sql_safe_updates =1;
-    select * from nhan_vien where `status` =1;
+SELECT 
+    *
+FROM
+    nhan_vien;
+ 
     
 
 -- 17.	Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond,
@@ -548,30 +570,45 @@ having SUM(chi_phi_thue + ifnull( so_luong * gia,0)) > 1000000) temp );
  set sql_safe_updates =1;
  
  -- 18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng). --
- SELECT 
-    *
-FROM
-    khach_hang;
- 
- set sql_safe_updates =0;
-UPDATE khach_hang 
-SET 
-    `status` = 1
-WHERE
-    khach_hang.ma_khach_hang IN (SELECT 
-            ma_khach_hang
-        FROM
-            hop_dong
-        WHERE
-            YEAR(ngay_lam_hop_dong) < 2021);
- set sql_safe_updates =1;
 
+--  set sql_safe_updates =0;
+-- UPDATE khach_hang 
+-- SET 
+--     `status` = 1
+-- WHERE
+--     khach_hang.ma_khach_hang IN (SELECT 
+--             ma_khach_hang
+--         FROM
+--             hop_dong
+--         WHERE
+--             YEAR(ngay_lam_hop_dong) < 2021);
+--  set sql_safe_updates =1;
+
+-- SELECT 
+--     *
+-- FROM
+--     khach_hang
+-- WHERE
+--     `status` = 1;
+
+ set sql_safe_updates = 0;
+ set foreign_key_checks =0;
+DELETE FROM khach_hang 
+WHERE
+    ma_khach_hang IN (SELECT 
+        ma_khach_hang
+    FROM
+        hop_dong
+    
+    WHERE
+        YEAR(ngay_lam_hop_dong) < 2021);
+  set foreign_key_checks =1;
+  set sql_safe_updates = 1;
 SELECT 
     *
 FROM
-    khach_hang
-WHERE
-    `status` = 1;
+    khach_hang;
+    
 
 -- 19	Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi. --
 SELECT 
