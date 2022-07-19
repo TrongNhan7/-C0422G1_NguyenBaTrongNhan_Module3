@@ -348,17 +348,26 @@ FROM
     khach_hang;
 
 -- c3 --
+-- SELECT 
+--     ho_ten
+-- FROM
+--     khach_hang
+-- WHERE
+--     ho_ten NOT IN (SELECT 
+--             ho_ten
+--         FROM
+--             khach_hang
+--         GROUP BY ho_ten
+--         HAVING COUNT(ho_ten) > 1);
+
 SELECT 
     ho_ten
 FROM
-    khach_hang
-WHERE
-    ho_ten NOT IN (SELECT 
-            ho_ten
-        FROM
-            khach_hang
-        GROUP BY ho_ten
-        HAVING COUNT(ho_ten) > 1);
+    khach_hang 
+UNION SELECT 
+    ho_ten
+FROM
+    khach_hang;
 
 -- 9.trong năm 2021 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng --
 SELECT 
@@ -370,7 +379,9 @@ WHERE
 GROUP BY `month`
 ORDER BY `month`;
 
--- 10.Hiển thị hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm --
+-- 10.	Hiển thị thông tin tương ứng với từng hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm.
+-- Kết quả hiển thị bao gồm ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc,
+-- so_luong_dich_vu_di_kem (được tính dựa trên việc sum so_luong ở dich_vu_di_kem).
 
 SELECT 
     hd.ma_hop_dong,
@@ -450,7 +461,7 @@ FROM
         INNER JOIN
     dich_vu_di_kem ON dich_vu_di_kem.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
 GROUP BY ten_dich_vu_di_kem
-HAVING so_luong_dich_vu_di_kem >= (SELECT 
+HAVING so_luong_dich_vu_di_kem = (SELECT 
         SUM(so_luong)
     FROM
         hop_dong_chi_tiet
@@ -548,6 +559,7 @@ FROM
 
 -- 17.	Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond,
 -- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ --
+
 set sql_safe_updates =0;
 update khach_hang
 set ma_loai_khach = 1
@@ -565,6 +577,7 @@ and ma_khach_hang in (select temp.ma_khach_hang from
     hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
         LEFT JOIN
     dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+    AND YEAR(ngay_lam_hop_dong) = 2021
 GROUP BY kh.ma_khach_hang
 having SUM(chi_phi_thue + ifnull( so_luong * gia,0)) > 1000000) temp );
  set sql_safe_updates =1;
