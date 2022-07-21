@@ -201,7 +201,7 @@ begin
 			left join hop_dong_chi_tiet hdct on hd.ma_hop_dong = hdct.ma_hop_dong
 			left join dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem= dvdk.ma_dich_vu_di_kem
 		group by dv.ma_dich_vu
-		having SUM(chi_phi_thue + ifnull( so_luong * gia,0)) >= 100000
+		having SUM(chi_phi_thue + ifnull( so_luong * gia,0)) >= money
     ) as tmp;
 return result;
 end $$
