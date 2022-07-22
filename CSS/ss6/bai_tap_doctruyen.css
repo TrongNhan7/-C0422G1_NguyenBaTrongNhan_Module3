@@ -4,8 +4,10 @@ td{
 select{
     text-align: center;
 }
-h2{
+h1{
     text-align: center;
+    font-family: Gigi;
+    color: orangered;
 }
 #format_all{
     display: flex;
@@ -25,12 +27,13 @@ h2{
     text-align: center;
     border-style: double;
     margin: 20px;
-    background-color: yellow;
+    background-image: url("nhung-hinh-anh-tien-hiep-tuyet-dep_031025117.jpg");
     border-radius: 20px;
 }
 
 .ten_truyen {
     font-family: "Droid Sans Mono";
+    font-size: 15px;
 
 }
 a{
@@ -41,13 +44,10 @@ a{
 }
 
 body{
-    background-color: darkorchid;
+    background-image: url("Tien-Hiep-The-Gioi-2-Beta-4.png");
 }
 
-h2{
-    font-family: Gigi;
-    color: orangered;
-}
+
 #login{
     position: relative;
     float: right;
