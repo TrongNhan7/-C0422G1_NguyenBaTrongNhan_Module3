@@ -27,7 +27,7 @@ h1{
     text-align: center;
     border-style: double;
     margin: 20px;
-    background-image: url("nhung-hinh-anh-tien-hiep-tuyet-dep_031025117.jpg");
+    background-image: url("file_img/nhung-hinh-anh-tien-hiep-tuyet-dep_031025117.jpg");
     border-radius: 20px;
 }
 
@@ -44,7 +44,7 @@ a{
 }
 
 body{
-    background-image: url("Tien-Hiep-The-Gioi-2-Beta-4.png");
+    background-image: url("file_img/Tien-Hiep-The-Gioi-2-Beta-4.png");
 }
 
 
