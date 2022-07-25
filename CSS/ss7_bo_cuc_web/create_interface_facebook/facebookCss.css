@@ -80,12 +80,7 @@
     margin: 0;
 }
 
-.boxcontainer {
-    width: 40%;
-    margin: 0 auto;
-    min-height: auto;
-    background-color: azure;
-}
+
 
 header {
     background-color: white;
@@ -112,12 +107,12 @@ header {
 
 .mid-header img {
     margin-top: 3px;
-    margin-left: 5px;
+    margin-left: 15px;
     width: 60px;
     height: 35px;
     float: left;
-    padding-left: 2px;
-    border-radius: 10px;
+    padding-left: 20px;
+    border-radius: 50px;
 }
 
 
@@ -141,6 +136,7 @@ header img:hover {
     padding-top: 40px;
     display: flex;
     width: 100%;
+    background-color: azure;
 }
 
 .aside-left li ,.aside-right li{
@@ -172,7 +168,7 @@ header img:hover {
 }
 
 .aside-right ul{
-    margin-left: 200px;
+    margin-left: 350px;
 }
 .article-mid{
     float: left;
@@ -180,13 +176,15 @@ header img:hover {
 .aside-right{
     float: left;
 }
+
+
 .section-1 {
     display: flex;
     margin-top: 5px;
 }
 
 .section-1 div img{
-    width: 60px;
+    width: 90px;
     height: 100px;
     padding-left: 7px;
     border-radius: 10px;

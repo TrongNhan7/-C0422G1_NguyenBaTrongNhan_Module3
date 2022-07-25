@@ -1,0 +1,312 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+/*màn hình điện thoai*/
+@media only screen and (max-width: 740px ) {
+    .col-s-1 {
+        width: 8.33333%;
+    }
+
+    .col-s-2 {
+        width: 16.66667%;
+    }
+
+    .col-s-3 {
+        width: 25%;
+    }
+
+    .col-s-4 {
+        width: 33.33333%;
+    }
+
+    .col-s-5 {
+        width: 41.66667%;
+    }
+
+    .col-s-6 {
+        width: 50%;
+    }
+
+    .col-s-7 {
+        width: 58.33333%;
+    }
+
+    .col-s-8 {
+        width: 66.66667%;
+    }
+
+    .col-s-9 {
+        width: 75%;
+    }
+
+    .col-s-10 {
+        width: 83.33333%;
+    }
+
+    .col-s-11 {
+        width: 91.66667%;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+
+p{
+    font-size: 5px;
+}
+iframe {
+    width: 100px;
+    height: 70px;
+}
+}
+
+/*Màn hinh laptop và máy tính bảng*/
+@media only screen and (min-width: 741px)and (max-width: 1240px) {
+    .col-m-1 {
+        width: 8.33333%;
+    }
+
+    .col-m-2 {
+        width: 16.66667%;
+    }
+
+    .col-m-3 {
+        width: 25%;
+    }
+
+    .col-m-4 {
+        width: 33.33333%;
+    }
+
+    .col-m-5 {
+        width: 41.66667%;
+    }
+
+    .col-m-6 {
+        width: 50%;
+    }
+
+    .col-m-7 {
+        width: 58.33333%;
+    }
+
+    .col-m-8 {
+        width: 66.66667%;
+    }
+
+    .col-m-9 {
+        width: 75%;
+    }
+
+    .col-m-10 {
+        width: 83.33333%;
+    }
+
+    .col-m-11 {
+        width: 91.66667%;
+    }
+
+    .col-m-12 {
+        width: 100%;
+    }
+}
+
+/*Màn hình máy tính pc và tivi smart*/
+@media only screen and (min-width: 1241px) {
+    .col-l-1 {
+        width: 8.33333%;
+    }
+
+    .col-l-2 {
+        width: 16.66667%;
+    }
+
+    .col-l-3 {
+        width: 25%;
+    }
+
+    .col-l-4 {
+        width: 33.33333%;
+    }
+
+    .col-l-5 {
+        width: 41.66667%;
+    }
+
+    .col-l-6 {
+        width: 50%;
+    }
+
+    .col-l-7 {
+        width: 58.33333%;
+    }
+
+    .col-l-8 {
+        width: 66.66667%;
+    }
+
+    .col-l-9 {
+        width: 75%;
+    }
+
+    .col-l-10 {
+        width: 83.33333%;
+    }
+
+    .col-l-11 {
+        width: 91.66667%;
+    }
+
+    .col-l-12 {
+        width: 100%;
+    }
+
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    border: 1px solid black;
+}
+header {
+    background-color: black;
+}
+header img {
+    width: 160px;
+    height: 60px;
+    margin: 10px;
+}
+
+header input {
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    color: white;
+}
+header input:hover{
+    cursor: pointer;
+}
+
+nav {
+    border: 2px solid black;
+    background-color: dimgray;
+    min-height: 40px;
+}
+
+aside {
+    border: 1px solid black;
+    min-height: 400px;
+}
+
+aside li {
+    font-family: Gigi;
+    text-align: center;
+
+}
+
+article {
+    min-height: 400px;
+}
+
+nav li {
+    position: relative;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li a {
+    width: 200px;
+    height: 30px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+    background-color: dimgray;
+    color: white;
+    margin-left: 35px;
+}
+
+nav ul ul li a {
+    width: 200px;
+    text-align: left;
+    padding-left: 5px;
+
+}
+
+nav li a:hover {
+    background-color: #CDCDCD;
+}
+
+nav ul ul {
+    position: absolute;
+    top: 30px;
+    visibility: hidden;
+}
+
+nav ul li:hover ul {
+    visibility: visible;
+}
+
+article iframe {
+    width: 100%;
+}
+
+aside {
+    padding: 10px;
+}
+aside p{
+    color: white;
+}
+
+aside iframe {
+    border: 5px solid #CDCDCD;
+    width: 370px;
+    height: 200px;
+}
+
+#content-p1 {
+    font-family: Gigi;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+#content-p2 {
+    padding: 20px;
+    text-align: left;
+    font-family: Dialog;
+    font-size: 20px;
+    color: white;
+}
+
+footer {
+    height: 50px;
+    text-align: center;
+    color: white;
+    padding: 14px;
+    border: 1px solid black;
+    background-color: black;
+}
+
+body{
+    background-image: url("anime img/d9281d0eaee2ba96240c483f10f8be94.jpg");
+}
