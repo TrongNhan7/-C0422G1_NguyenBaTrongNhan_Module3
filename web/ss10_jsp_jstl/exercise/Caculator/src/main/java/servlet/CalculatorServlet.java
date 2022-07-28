@@ -19,15 +19,7 @@ public class CalculatorServlet extends HttpServlet {
         double secondNumber = Double.parseDouble(request.getParameter("secondNumber"));
         String operator = request.getParameter("operator");
         Caculator caculator = new Caculator();
-
-
-        double result = 0;
-        try {
-            result = caculator.caculator(firstNumber, secondNumber, operator);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        double result = caculator.caculator(firstNumber, secondNumber, operator);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("result.jsp");
         request.setAttribute("firstNumber", firstNumber);

@@ -12,7 +12,7 @@ public class Caculator {
         this.secondNumber = secondNumber;
     }
 
-    public static double caculator(double firstNumer, double secondNumber, String operator) throws Exception {
+    public static double caculator(double firstNumer, double secondNumber, String operator) {
         double result = 0;
         switch (operator) {
             case "+":

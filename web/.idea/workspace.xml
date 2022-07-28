@@ -20,95 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98d371e6-e64e-4d24-9a4b-b733a997a897" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../SQL/.idea/SQL.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/.idea/ss10_jsp_jstl.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/demo_jstl/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/src/main/java/model/Caculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/src/main/java/servlet/CalculatorServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/src/main/webapp/result.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/list-of-customers/src/main/java/.idea/java.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/list-of-customers/src/main/java/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/list-of-customers/src/main/java/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/list-of-customers/src/main/java/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/list-of-customers/src/main/java/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/list-of-customers/src/main/java/main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/list-of-customers/src/main/java/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/list-of-customers/src/main/java/servlet/CustomerServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/list-of-customers/src/main/webapp/view/customer/list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ss10_jsp_jstl/practice/dictionary/src/main/webapp/dictionary.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/CaculatorServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-grid.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-grid.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-grid.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-grid.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-reboot.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-reboot.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-reboot.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-reboot.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-utilities.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-utilities.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-utilities.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-utilities.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-utilities.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-utilities.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-utilities.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap-utilities.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap.rtl.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap.rtl.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap.rtl.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/css/bootstrap.rtl.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.esm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.esm.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.esm.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.esm.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/bootstrap 5/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/img/ovkEwZ9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/result.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/model/Caculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/model/Caculator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/servlet/CalculatorServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/servlet/CalculatorServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss9/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ss9/.gradle/6.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss9/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss9/.gradle/6.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss9/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ss9/.gradle/6.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss9/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss9/.gradle/6.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss9/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss9/.gradle/6.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss9/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss9/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ss9/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ss9/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/6.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/build/classes/java/main/model/Caculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/build/classes/java/main/model/Caculator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/build/classes/java/main/servlet/CalculatorServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/build/classes/java/main/servlet/CalculatorServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/build/libs/caculator-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/build/libs/caculator-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/src/main/java/model/Caculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/src/main/java/model/Caculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/src/main/java/servlet/CalculatorServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/ss10_jsp_jstl/exercise/Caculator/src/main/java/servlet/CalculatorServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +75,7 @@
       <workItem from="1659005246029" duration="11000" />
       <workItem from="1659005277934" duration="26000" />
       <workItem from="1659005352666" duration="13000" />
-      <workItem from="1659005894819" duration="2563000" />
+      <workItem from="1659005894819" duration="3075000" />
     </task>
     <servers />
   </component>
