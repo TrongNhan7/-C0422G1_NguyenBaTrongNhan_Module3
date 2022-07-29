@@ -19,8 +19,7 @@
     <p>Nhập tên sản phẩm cần tìm</p>
     <input type="text" name="nameProduct" placeholder="nhâp tên sản phẩm">
     <br>
-    <input type="submit" value="Enter">
-
+    <button type="submit">Tìm</button>
 </form>
 </body>
 </html>

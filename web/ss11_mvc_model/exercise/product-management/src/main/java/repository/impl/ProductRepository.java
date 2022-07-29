@@ -48,12 +48,18 @@ public class ProductRepository implements IProductRepository {
     public List<Product> findByName(String name) {
         List<Product> productList1 = new ArrayList<>(productList.values());
         List<Product> products = new ArrayList<>();
+        boolean flag=false;
         for (Product product : productList1) {
-            if (product.getNameProduct().equals(name)) {
+            if (product.getNameProduct().contains(name)) {
                 products.add(product);
+                flag =true;
             }
         }
-        return products;
+       if(flag){
+           return products;
+       }else {
+           return null;
+       }
     }
 
 //    @Override
