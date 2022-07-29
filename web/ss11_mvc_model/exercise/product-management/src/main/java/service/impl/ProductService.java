@@ -37,7 +37,7 @@ productRepository.delete(id);
     }
 
     @Override
-    public List<Product>  findByName(String name) {
+    public List<Product> findByName(String name) {
         return productRepository.findByName(name);
     }
 }
