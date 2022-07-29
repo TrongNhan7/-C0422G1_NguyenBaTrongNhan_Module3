@@ -45,12 +45,23 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public Product findByName(String name) {
-        for (Map.Entry<Integer, Product> entry : productList.entrySet()) {
-            if(entry.getValue().getNameProduct().contains(name)){
-                return productList.get(entry.getValue().getId());
+    public List<Product> findByName(String name) {
+        List<Product> productList = new ArrayList<>();
+        for (Product product : productList) {
+            if (product.getNameProduct().contains(name)) {
+                productList.add(product);
             }
         }
-        return null;
+        return productList;
     }
+
+//    @Override
+//    public Product findByName(String name) {
+//        for (Map.Entry<Integer, Product> entry : productList.entrySet()) {
+//            if(entry.getValue().getNameProduct().contains(name)){
+//                return productList.get(entry.getValue().getId());
+//            }
+//        }
+//        return null;
+//    }
 }

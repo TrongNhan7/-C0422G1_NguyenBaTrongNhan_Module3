@@ -42,12 +42,12 @@ public class ProductServlet extends HttpServlet {
     }
     private void findByName(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("nameProduct");
-        Product product = productService.findByName(name);
+        List<Product> productList = productService.findByName(name);
         RequestDispatcher dispatcher;
-        if(product == null){
+        if(productList == null){
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
-            request.setAttribute("productList", product);
+            request.setAttribute("productList", productList);
             dispatcher = request.getRequestDispatcher("view/product/viewListByName.jsp");
         }
         try {
