@@ -1,6 +1,6 @@
 package servlet;
 
-import model.Caculator;
+import service.CaculatorService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,8 +18,8 @@ public class CalculatorServlet extends HttpServlet {
         double firstNumber = Double.parseDouble(request.getParameter("firstNumber"));
         double secondNumber = Double.parseDouble(request.getParameter("secondNumber"));
         String operator = request.getParameter("operator");
-        Caculator caculator = new Caculator();
-        double result = caculator.caculator(firstNumber, secondNumber, operator);
+        CaculatorService caculator = new CaculatorService();
+        double result = caculator.countCaculator(firstNumber, secondNumber, operator);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("result.jsp");
         request.setAttribute("firstNumber", firstNumber);

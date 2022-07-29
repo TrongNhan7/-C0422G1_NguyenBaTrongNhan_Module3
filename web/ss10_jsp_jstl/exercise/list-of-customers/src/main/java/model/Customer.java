@@ -3,10 +3,10 @@ package model;
 import java.time.LocalDate;
 
 public class Customer {
-private String name;
-private LocalDate age;
-private String address;
-private String url;
+    private String name;
+    private LocalDate age;
+    private String address;
+    private String url;
 
     public Customer() {
     }
