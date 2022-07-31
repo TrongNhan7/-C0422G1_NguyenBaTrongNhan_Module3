@@ -15,7 +15,13 @@
 <body>
 <h1> Trang danh sách</h1>
 <a href="/product?action=add">Thêm mới sản phẩm</a>
-<a href="/product?action=findProductByName">Tìm kiếm sản phẩm</a>
+<form method="post" action="/product?action=findProductByName">
+    <p>Nhập tên sản phẩm cần tìm</p>
+    <input type="text" name="nameProduct" placeholder="nhâp tên sản phẩm">
+    <br>
+    <button type="submit">Tìm</button>
+</form>
+
 <table border="1">
     <tr>
         <th>STT</th>
@@ -26,6 +32,7 @@
         <th>manufactory</th>
 
     </tr>
+
     <c:forEach var="product" items="${productList}" varStatus="status">
         <tr>
             <td>${status.count}</td>
@@ -34,15 +41,19 @@
             <td>${product.priceProduct}</td>
             <td>${product.descriptionProduct}</td>
             <td>${product.manufactory}</td>
-            <td>$<a href="/product?action=edit&id=${product.id}">edit</a></td>
+            <td><a href="/product?action=edit&id=${product.id}">edit</a></td>
 
-            <td>$<a href="/product?action=delete&id=${product.id}">delete</a></td>
+            <td><a href="/product?action=delete&id=${product.id}">delete</a></td>
 
-            <td>$<a href="/product?action=getProductById&id=${product.id}">getProduct</a></td>
+            <td><a href="/product?action=getProductById&id=${product.id}">getProduct</a></td>
 
         </tr>
     </c:forEach>
 
 </table>
+<br>
+
+<a href="/product">Quay lại trang chủ</a>
+
 </body>
 </html>

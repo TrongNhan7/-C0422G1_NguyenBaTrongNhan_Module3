@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", urlPatterns = {"","/product"})
@@ -44,11 +45,11 @@ public class ProductServlet extends HttpServlet {
         String name = request.getParameter("nameProduct");
         List<Product> productList = productService.findByName(name);
         RequestDispatcher dispatcher;
-        if(productList == null){
+        if(productList.size() == 0){
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
             request.setAttribute("productList", productList);
-            dispatcher = request.getRequestDispatcher("view/product/viewListByName.jsp");
+            dispatcher = request.getRequestDispatcher("view/product/list.jsp");
         }
         try {
             dispatcher.forward(request, response);
@@ -135,34 +136,25 @@ public class ProductServlet extends HttpServlet {
                 viewProduct(request,response);
                 break;
             case "findProductByName":
-                showFindByName(request,response);
                 break;
             default:
                 showListProduct(request, response);
         }
     }
 
-    private void showFindByName(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/product/findByName.jsp");
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     private void viewProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productService.getProductById(id);
+        List<Product> products = new ArrayList<>();
+        products.add(product);
         RequestDispatcher dispatcher;
         if(product == null){
             dispatcher = request.getRequestDispatcher("error-404.jsp");
         } else {
-            request.setAttribute("product", product);
-            dispatcher = request.getRequestDispatcher("view/product/viewProduct.jsp");
+            request.setAttribute("productList", products);
+            dispatcher = request.getRequestDispatcher("view/product/list.jsp");
         }
         try {
             dispatcher.forward(request, response);
