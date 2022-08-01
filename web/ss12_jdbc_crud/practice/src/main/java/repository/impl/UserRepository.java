@@ -114,8 +114,8 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public User selectUserByCountry(String country) {
-        User user = null;
+    public List<User> selectUserByCountry(String country) {
+        List<User> users = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_COUNTRY);
@@ -127,12 +127,12 @@ public class UserRepository implements IUserRepository {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
-                user = new User(id, name, email, country);
+                users.add(new User(id, name, email, country));
             }
         } catch (SQLException e) {
             printSQLException(e);
         }
-        return user;
+        return users;
     }
 
 
