@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0c948458-3b7d-4cfa-90dd-5604656042c7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ss12_jdbc_crud.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/practice/src/practice.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/java/common/ComparatorName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/java/controller/UserServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/java/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/java/repository/BaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/java/repository/IUserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/java/repository/impl/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/java/service/IUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/java/service/impl/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/webapp/error-404.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/webapp/view/create.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/webapp/view/edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ss13_transaction/practice/src/main/webapp/view/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/controller/UserServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/controller/UserServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/repository/IUserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/repository/IUserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/repository/impl/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/repository/impl/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/service/IUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/service/IUserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/service/impl/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/WEB-INF/classes/service/impl/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/user/create.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/user/edit.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../apache-tomcat-9.0.65/webapps/ROOT/user/list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ss11_mvc_model/exercise/product-management/src/main/java/service/impl/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ss11_mvc_model/exercise/product-management/src/main/java/service/impl/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/practice/SQL-demo.sql" beforeDir="false" afterPath="$PROJECT_DIR$/practice/SQL-demo.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2Cp8pH6dBva6Y5pwEJJ5LrEizjX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c948458-3b7d-4cfa-90dd-5604656042c7" name="Default Changelist" comment="" />
+      <created>1659488346727</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659488346727</updated>
+      <workItem from="1659488348133" duration="22000" />
+      <workItem from="1659489343360" duration="121000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1659488368708">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1659488368708" />
+  </component>
+</project>

@@ -13,7 +13,7 @@
     </h2>
 </center>
 <div align="center">
-    <form method="post">
+    <form method="post" action="/users?action=edit-SP">
         <table border="1" cellpadding="5">
             <caption>
                 <h2>

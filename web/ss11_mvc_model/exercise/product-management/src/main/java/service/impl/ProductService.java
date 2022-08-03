@@ -28,7 +28,7 @@ public class ProductService implements IProductService {
 
     @Override
     public void delete(int id) {
-productRepository.delete(id);
+        productRepository.delete(id);
     }
 
     @Override
@@ -37,7 +37,7 @@ productRepository.delete(id);
     }
 
     @Override
-    public List<Product>findByName(String name) {
+    public List<Product> findByName(String name) {
         return this.productRepository.findByName(name);
     }
 }
