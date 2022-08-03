@@ -86,7 +86,7 @@
 
     <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form action="/users?action=delete-by-SP" method="get">
+            <form action="/users?action=delete-by-SP" method="post">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>

@@ -150,13 +150,16 @@ public class UserServlet extends HttpServlet {
         if(permision == null){
             int[] testArr = {5,6,7};
             userService.addUserTransaction(newUser, testArr);
+            request.setAttribute("mess", "Thêm mới thất bại");
         }else {
             permisionInt=new int[permision.length];
             for (int i = 0; i < permision.length; i++) {
                 permisionInt[i] = Integer.parseInt(permision[i]);
             }
             userService.addUserTransaction(newUser, permisionInt);
+            request.setAttribute("mess", "Thêm mới thành công");
         }
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/create-transaction.jsp");
         dispatcher.forward(request, response);
     }

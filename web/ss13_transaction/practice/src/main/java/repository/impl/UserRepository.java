@@ -386,4 +386,6 @@ public class UserRepository implements IUserRepository {
             }
         }
     }
+    List<Integer> list= new ArrayList();
+
 }

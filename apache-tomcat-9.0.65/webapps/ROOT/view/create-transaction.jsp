@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+
 <div class="container bg-light h-100 w-50">
     <div class="w-100">
         <form method="post" action="/users?action=create-user-transaction">
         <div align="center">
             <div>
                 <h1>User Management</h1>
+                <h3><c:if test="${mess!=null}">
+                    <p>${mess}</p>
+                </c:if></h3>
                 <h2>
                     <a class="btn btn-primary" href="/users?action=users" role="button">List All Users</a>
                 </h2>
