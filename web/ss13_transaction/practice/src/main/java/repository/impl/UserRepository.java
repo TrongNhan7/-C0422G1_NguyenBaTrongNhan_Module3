@@ -250,11 +250,7 @@ public class UserRepository implements IUserRepository {
         // for getting user id
         ResultSet rs = null;
         try {
-            // set auto commit to false
             connection.setAutoCommit(false);
-            //
-            // Insert user
-            //
             pstmt = connection.prepareStatement(INSERT_USERS_SQL, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, user.getName());
             pstmt.setString(2, user.getEmail());
@@ -265,18 +261,19 @@ public class UserRepository implements IUserRepository {
             int userId = 0;
             if (rs.next())
                 userId = rs.getInt(1);
-            //
-            // in case the insert operation successes, assign permision to user
-            //
+
             if (rowAffected == 1) {
-                // assign permision to user
                 String sqlPivot = "INSERT INTO user_permision(user_id,permision_id) "
                         + "VALUES(?,?)";
                 pstmtAssignment = connection.prepareStatement(sqlPivot);
                 for (int permisionId : permisions) {
-                    pstmtAssignment.setInt(1, userId);
-                    pstmtAssignment.setInt(2, permisionId);
-                    pstmtAssignment.executeUpdate();
+                    if (permisionId > 0 && permisionId < 5) {
+                        pstmtAssignment.setInt(1, userId);
+                        pstmtAssignment.setInt(2, permisionId);
+                        pstmtAssignment.executeUpdate();
+                    }else {
+                        connection.rollback();
+                    }
                 }
                 connection.commit();
             } else {

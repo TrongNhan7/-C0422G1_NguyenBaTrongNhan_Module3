@@ -30,43 +30,41 @@ public class UserServlet extends HttpServlet {
             action = "";
         }
 //        String ac = Optional.ofNullable(request.getParameter("action")).orElse("");
-        try {
-            switch (action) {
-                case "create":
-                    showNewForm(request, response);
-                    break;
+        switch (action) {
+            case "create":
+                showNewForm(request, response);
+                break;
+            case "create-user-transaction":
+                showNewFormTransaction(request, response);
+                break;
 //                case "edit":
 //                    showEditForm(request, response);
 //                    break;
-                case "edit-SP":
-                    showEditForm_SP(request, response);
-                    break;
+            case "edit-SP":
+                showEditForm_SP(request, response);
+                break;
 //                case "delete":
 //                    deleteUser(request, response);
 //                    break;
-                case "delete-by-SP":
-                    deleteUserBySP(request, response);
-                    break;
-                case "permision":
-                    addUserPermision(request, response);
-                    break;
-                case "test-without-tran":
-                    testWithoutTran(request, response);
-                    break;
-                case "add-users-Transaction":
+
+            case "permision":
+                addUserPermision(request, response);
+                break;
+            case "test-without-tran":
+                testWithoutTran(request, response);
+                break;
+            case "add-users-Transaction":
 //                    showAddUserTransaction(request, response);
-                    break;
+                break;
 //                default:
 //                    listUser(request, response);
 //                    break;
-                default:
-                    listUseSP(request, response);
-                    break;
-            }
-        } catch (SQLException ex) {
-            throw new ServletException(ex);
+            default:
+                listUseSP(request, response);
+                break;
         }
     }
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -80,6 +78,9 @@ public class UserServlet extends HttpServlet {
                 case "create":
                     insertUser(request, response);
                     break;
+                case "create-user-transaction":
+                    addUserTransaction(request, response);
+                    break;
 //                case "edit":
 //                    updateUser(request, response);
 //                    break;
@@ -88,8 +89,13 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "findByCountry":
                     findByCountry(request, response);
+                    break;
                 case "selectUserSortName":
                     selectUserSortName(request, response);
+                    break;
+                case "delete-by-SP":
+                    deleteUserBySP(request, response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -133,18 +139,40 @@ public class UserServlet extends HttpServlet {
         userService.addUserTransaction(user, permision);
     }
 
+    private void addUserTransaction(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String country = request.getParameter("country");
+        User newUser = new User(name, email, country);
+        String[] permision = request.getParameterValues("permision");
+        int[] permisionInt ;
+        if(permision == null){
+            int[] testArr = {5,6,7};
+            userService.addUserTransaction(newUser, testArr);
+        }else {
+            permisionInt=new int[permision.length];
+            for (int i = 0; i < permision.length; i++) {
+                permisionInt[i] = Integer.parseInt(permision[i]);
+            }
+            userService.addUserTransaction(newUser, permisionInt);
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/create-transaction.jsp");
+        dispatcher.forward(request, response);
+    }
+
 
     private void updateUser_SP(HttpServletRequest request, HttpServletResponse response)
-         throws SQLException, IOException, ServletException {
-            int id = Integer.parseInt(request.getParameter("id"));
-            String name = request.getParameter("name");
-            String email = request.getParameter("email");
-            String country = request.getParameter("country");
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String country = request.getParameter("country");
 
-            User book = new User(id, name, email, country);
-            userService.updateUserBySP(book);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("view/edit.jsp");
-            dispatcher.forward(request, response);
+        User book = new User(id, name, email, country);
+        userService.updateUserBySP(book);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/edit.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void findByCountry(HttpServletRequest request, HttpServletResponse response) {
@@ -193,6 +221,12 @@ public class UserServlet extends HttpServlet {
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/create.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void showNewFormTransaction(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/create-transaction.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -251,4 +285,6 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/list.jsp");
         dispatcher.forward(request, response);
     }
+
+
 }

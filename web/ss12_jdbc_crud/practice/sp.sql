@@ -43,3 +43,16 @@ BEGIN
 DELIMITER ;
 call edit_user(6,"daThu2","dathu@gmail.com","VN");
 
+DELIMITER $$
+CREATE PROCEDURE delete_By_SP(in user_id int)
+BEGIN
+ set sql_safe_updates = 0;
+    delete 
+    FROM users
+    where users.id = user_id;
+set sql_safe_updates = 1;
+    END$$
+DELIMITER ;
+call delete_By_SP(6);
+select * from users;
+
