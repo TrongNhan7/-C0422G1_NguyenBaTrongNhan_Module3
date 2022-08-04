@@ -10,6 +10,7 @@ import java.util.List;
 
 public class StudentRepository implements IStudentRepository {
     private final String SELECT_ALL ="select *from student";
+    private final String SEARCH ="select * from student where name like ? and account like ? and class_id like ?";
     private final String DELETE_BY_ID ="call delete_by_id(?);";
     private final String INSERT_INTO =" insert into student(`name`,birthday, gender,email,`point`,class_id,`account`)" +
             " values (?,?,?,?,?,?,?)";
@@ -40,6 +41,38 @@ public class StudentRepository implements IStudentRepository {
         // trả về 1 list
         return studentList;
     }
+
+    @Override
+    public List<Student> search(String searchName, String searchAccount, String searchClassId) {
+        List<Student> studentList = new ArrayList<>();
+        // kết nối dabase
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH);
+            preparedStatement.setString(1,"%"+searchName+"%");
+            preparedStatement.setString(2,"%"+searchAccount+"%");
+            preparedStatement.setString(3,"%"+searchClassId+"%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id"); // colummLable : tên  thuocj tính của bảng
+                String name  = resultSet.getString("name");
+                Boolean gender = resultSet.getBoolean("gender");
+                String birthday = resultSet.getString("birthday");
+                int point = resultSet.getInt("point");
+                String account = resultSet.getString("account");
+                int classId = resultSet.getInt("class_id");
+                String email = resultSet.getString("email");
+                Student student = new Student(id,name,gender,birthday,point,account,classId,email);
+                studentList.add(student);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        return studentList;
+    }
+
     @Override
     public boolean add(Student student) {
         // kết nối db
@@ -148,5 +181,21 @@ public class StudentRepository implements IStudentRepository {
     @Override
     public Student findById(int id) {
         return null;
+    }
+
+    @Override
+    public boolean login(String username, String pass) {
+        String query = "select * from jame where `account` ="+"'"+username+"'"+" and password ="+pass;
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                return true;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
     }
 }

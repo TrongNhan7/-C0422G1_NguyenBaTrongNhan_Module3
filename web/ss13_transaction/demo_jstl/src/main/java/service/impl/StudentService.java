@@ -15,6 +15,11 @@ public class StudentService implements IStudentService {
     }
 
     @Override
+    public List<Student> search(String name, String account, String classId) {
+        return studentRepository.search(name,account,classId);
+    }
+
+    @Override
     public Student findById(int id) {
         return null;
     }
@@ -36,5 +41,11 @@ public class StudentService implements IStudentService {
     @Override
     public boolean delete(int id) {
         return studentRepository.delete(id);
+    }
+
+    @Override
+    public boolean login(String username, String pass) {
+
+        return studentRepository.login(username,pass);
     }
 }

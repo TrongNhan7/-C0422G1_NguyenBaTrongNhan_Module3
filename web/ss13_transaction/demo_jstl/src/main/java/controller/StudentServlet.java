@@ -48,9 +48,14 @@ public class StudentServlet extends HttpServlet {
             mess ="Xoa thanh cong";
         }
         request.setAttribute("mess", mess);
+
+        List<ClassCG> classCGList = classService.findAll();
+        request.setAttribute("classList",classCGList);
+
         List<Student> studentList = studentService.findAll();
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/student/list.jsp");
         request.setAttribute("studentList",studentList);
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/student/list.jsp");
         try {
             requestDispatcher.forward(request,response);
         } catch (ServletException e) {
@@ -92,7 +97,8 @@ public class StudentServlet extends HttpServlet {
                 break;
             case "delete":
                 break;
-            case "edit":
+            case "search":
+                search(request,response);
                 break;
             case "transaction":
                 goToTransaction(request,response);
@@ -101,6 +107,25 @@ public class StudentServlet extends HttpServlet {
                 // trả về trang list
                 showListStudent(request,response);
         }
+    }
+
+    private void search(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        String account = request.getParameter("account");
+        String classId = request.getParameter("classId");
+        List<Student> studentList = studentService.search(name,account,classId);
+        List<ClassCG> classCGList = classService.findAll();
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/student/list.jsp");
+        request.setAttribute("studentList",studentList);
+        request.setAttribute("classList",classCGList);
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void goToTransaction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

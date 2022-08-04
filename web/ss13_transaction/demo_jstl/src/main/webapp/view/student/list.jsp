@@ -18,6 +18,18 @@
 <h1> Trang danh sách</h1>
 <a href="/student?action=add">Thêm mới sinh viên</a>
 <a href="/student?action=transaction">Call Transaction</a>
+<form action="/student" method="get">
+    <input hidden name="action" value="search">
+    <input name="name" placeholder="nhập tên">
+    <input name="account" placeholder="nhập account">
+    <select name="classId">
+        <option value="">Chon lớp</option>
+        <c:forEach var="cls" items="${classList}">
+            <option value="${cls.id}">${cls.name}</option>
+        </c:forEach>
+    </select>
+    <button>Search</button>
+</form>
 <c:if test="${mess!=null}">
     <p class="text-danger">${mess}</p>
 </c:if>
@@ -81,6 +93,7 @@
         </tr>
     </c:forEach>
 </table>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
