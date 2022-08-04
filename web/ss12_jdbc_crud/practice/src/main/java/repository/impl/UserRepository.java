@@ -21,7 +21,7 @@ public class UserRepository implements IUserRepository {
     private static final String SELECT_ALL_USERS = "select * from users";
     private static final String DELETE_USERS_SQL = "delete from users where id = ?;";
     private static final String UPDATE_USERS_SQL = "update users set name = ?,email= ?, country =? where id = ?;";
-    private static final String SELECT_USER_BY_COUNTRY = "select id,name,email,country from users where country =?";
+    private static final String SELECT_USER_BY_COUNTRY = "select id,name,email,country from users where country like ?";
 
 
     public UserRepository() {
@@ -119,7 +119,7 @@ public class UserRepository implements IUserRepository {
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_COUNTRY);
-            preparedStatement.setString(1, country);
+            preparedStatement.setString(1, "%" + country + "%");
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
 
