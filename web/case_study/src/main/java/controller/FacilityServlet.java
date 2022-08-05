@@ -31,11 +31,13 @@ public class FacilityServlet extends HttpServlet {
         }
 
     }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
     private void showEditFacility(HttpServletRequest request, HttpServletResponse response) {
 
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("facility/fac-edit.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/facility/fac-edit.jsp");
 
         try {
             dispatcher.forward(request, response);
@@ -47,7 +49,7 @@ public class FacilityServlet extends HttpServlet {
     }
 
     private void showCreateFacility(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("facility/fac-create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/facility/fac-create.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -57,14 +59,11 @@ public class FacilityServlet extends HttpServlet {
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     private void listFacility(HttpServletRequest request, HttpServletResponse response) {
 //        List<Facility> facilityList = facilityService.selectAllUsersBySP();
 //        request.setAttribute("facilityList", facilityList);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("facility/fac-list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/facility/fac-list.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

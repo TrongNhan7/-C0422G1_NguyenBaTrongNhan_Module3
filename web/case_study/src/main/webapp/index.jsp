@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: This PC
-  Date: 8/4/2022
-  Time: 9:16 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -25,11 +18,11 @@
         </nav>
     </div>
 </header>
-<nav class="row">
-    <div class="col-sm-12 col-lg-12">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="row ">
+    <div class="col-sm-12 col-lg-12 ">
+        <nav class="navbar navbar-expand-lg navbar-light bg-success">
             <div class="container-fluid">
-                <a class="navbar-brand ms-5" href="#">Home</a>
+                <a class="navbar-brand ms-5 text-white" href="#">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -38,110 +31,114 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Employee</a>
+                            <a class="nav-link active text-white" aria-current="page" href="/employee">Employee</a>
                         </li>
                         <li class="nav-item ms-5">
-                            <a class="nav-link" href="#">Customer</a>
+                            <a class="nav-link text-white" href="/customer">Customer</a>
                         </li>
-                        <li class="nav-item ms-5">
-                            <a class="nav-link" href="/facility">Service</a>
+                        <li class="nav-item ms-5 ">
+                            <a class="nav-link text-white" href="/facility">Service</a>
                         </li>
-                        <li class="nav-item ms-5">
-                            <a class="nav-link" href="#">Contract</a>
+                        <li class="nav-item ms-5 text-white">
+                            <a class="nav-link text-white" href="#">Contract</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <form class="d-flex mt-2">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-outline-success text-white" type="submit" >Search</button>
                     </form>
                 </div>
             </div>
         </nav>
     </div>
 </nav>
-<div class="container-fluid row ">
-    <div class="col-sm-12 col-lg-12">
-        <div class="card bg-dark text-white">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/4056083.jpg" class="d-block w-100" alt="...">
+<div class="container ">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <div class="card bg-dark text-white">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/4056083.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/14884171677726.jpg" class="d-block w-100" alt="...">
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                        <img src="img/14884171677726.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/Resort-sea-palm-trees-pool_3840x2160.jpg" class="d-block w-100" alt="...">
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-            <div class="card-img-overlay " style="z-index: 1">
-                <!-- Default dropend button -->
-                <ul style="list-style-type: none">
-                    <li>
-                        <div class="btn-group dropend  rounded-5">
-                            <button type="button" class="btn btn-secondary dropdown-toggle bg-success mt-5 "
-                                    data-bs-toggle="dropdown" aria-expanded="false" style="height: 100px">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" fill="currentColor"
-                                     class="bi bi-telephone-fill" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                          d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
-                                </svg>
-                                <span style="font-size: 15px">Hỗ Trợ</span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                                         class="bi bi-telephone" viewBox="0 0 16 16">
-                                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
-                                    </svg>
-                                </a></li>
-                                <li><a class="dropdown-item" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                                         class="bi bi-people-fill" viewBox="0 0 16 16">
-                                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                <div class="card-img-overlay " style="z-index: 1">
+                    <!-- Default dropend button -->
+                    <ul style="list-style-type: none">
+                        <li>
+                            <div class="btn-group dropend  rounded-5">
+                                <button type="button" class="btn btn-secondary dropdown-toggle bg-success mt-5 "
+                                        data-bs-toggle="dropdown" aria-expanded="false" style="height: 100px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" fill="currentColor"
+                                         class="bi bi-telephone-fill" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
-                                              d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-                                        <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                              d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
                                     </svg>
-                                </a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="btn-group dropend  rounded-5">
-                            <button type="button" class="btn btn-secondary dropdown-toggle bg-success mt-5 "
-                                    data-bs-toggle="dropdown" aria-expanded="false" style="height: 100px">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="currentColor"
-                                     class="bi bi-tags" viewBox="0 0 16 16">
-                                    <path d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"/>
-                                    <path d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"/>
-                                </svg>
-                                <span style="font-size: 15px">Hình ảnh</span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"><img src="img/biet-thu.jpg" width="120px" height="100px"></a></li>
-                                <li><a class="dropdown-item" href="#"><img src="img/room.jpg" width="120px" height="100px"></a></li>
-                                <li><a class="dropdown-item" href="#"><img src="img/house.jpg" width="120px" height="100px"></a></li>
+                                    <span style="font-size: 15px">Hỗ Trợ</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                             fill="currentColor"
+                                             class="bi bi-telephone" viewBox="0 0 16 16">
+                                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                        </svg>
+                                    </a></li>
+                                    <li><a class="dropdown-item" href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                             fill="currentColor"
+                                             class="bi bi-people-fill" viewBox="0 0 16 16">
+                                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                            <path fill-rule="evenodd"
+                                                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                        </svg>
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="btn-group dropend  rounded-5">
+                                <button type="button" class="btn btn-secondary dropdown-toggle bg-success mt-5 "
+                                        data-bs-toggle="dropdown" aria-expanded="false" style="height: 100px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="currentColor"
+                                         class="bi bi-tags" viewBox="0 0 16 16">
+                                        <path d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"/>
+                                        <path d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"/>
+                                    </svg>
+                                    <span style="font-size: 15px">Hình ảnh</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#"><img src="img/biet-thu.jpg" width="120px"
+                                                                               height="100px"></a></li>
+                                    <li><a class="dropdown-item" href="#"><img src="img/room.jpg" width="120px"
+                                                                               height="100px"></a></li>
+                                    <li><a class="dropdown-item" href="#"><img src="img/house.jpg" width="120px"
+                                                                               height="100px"></a></li>
 
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-                <div style="text-align: center; margin-top: 300px; font-size: 30px;font-family: Gigi">
-                    <h2 class="card-title">KHU NGHỈ DƯỠNG ẨM THỰC </h2>
-                    <p class="card-text">TỌA LẠC TẠI BÃI BIỂN ĐÀ NẴNG </p>
-                    <p class="card-text">MỘT TRONG 6 BÃI BIỂN ĐẸP NHẤT THẾ GIỚI</p>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 200px; font-size: 30px;font-family: Gigi">
+                        <h2 class="card-title">KHU NGHỈ DƯỠNG ẨM THỰC </h2>
+                        <p class="card-text">TỌA LẠC TẠI BÃI BIỂN ĐÀ NẴNG </p>
+                        <p class="card-text">MỘT TRONG 6 BÃI BIỂN ĐẸP NHẤT THẾ GIỚI</p>
+                    </div>
                 </div>
             </div>
         </div>
