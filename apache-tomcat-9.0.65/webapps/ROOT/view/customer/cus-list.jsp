@@ -32,6 +32,9 @@
 </div>
 
 <div class="container ">
+    <c:if test="${mess!=null}">
+        <p class="text-danger" align="center" style="font-size: 50px">${mess}</p>
+    </c:if>
     <table class="table table-dark table-striped">
         <tr>
             <th>ID</th>
@@ -41,8 +44,9 @@
             <th>Id Card</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Customer Type Id</th>
+            <th>Customer Type Name</th>
             <th>Ardress</th>
+            <th>Status</th>
             <th colspan="2" style="text-align: center">Actions</th>
         </tr>
         <c:forEach var="customer" items="${customerList}">
@@ -50,21 +54,35 @@
                 <td><c:out value="${customer.id}"/></td>
                 <td><c:out value="${customer.nameCustomer}"/></td>
                 <td><c:out value="${customer.birthday}"/></td>
-                <td><c:out value="${customer.gender}"/></td>
+                <c:choose>
+                    <c:when test="${customer.gender == false}">
+                        <td>Nữ</td>
+                    </c:when>
+                    <c:when test="${customer.gender == true}">
+                        <td>Nam</td>
+                    </c:when>
+                </c:choose>
                 <td><c:out value="${customer.idCard}"/></td>
                 <td><c:out value="${customer.phone}"/></td>
                 <td><c:out value="${customer.email}"/></td>
-<%--              <td> <c:forEach items="${customerTypeList}" var="customerType">--%>
-<%--                    <c:if test="${customer.customerTypeId == customerType.id}">--%>
-<%--                        ${customerType.customerTypeName}--%>
-<%--                    </c:if>--%>
-<%--                </c:forEach>--%>
-<%--              </td>--%>
-                <td><c:out value="${customer.customerType}"/></td>
+                <c:forEach var="CusType" items="${customerTypeList}">
+                    <c:if test="${CusType.idCustomerType==customer.customerTypeId}">
+                        <td>${CusType.name}</td>
+                    </c:if>
+                </c:forEach>
                 <td><c:out value="${customer.address}"/></td>
 
+                <c:choose>
+                    <c:when test="${customer.status == false}">
+                        <td>Tồn tại</td>
+                    </c:when>
+                    <c:when test="${customer.status == true}">
+                        <td>Không tồn tại</td>
+                    </c:when>
+                </c:choose>
+
                 <td style="text-align: center">
-                    <a href="/facility?action=edit&id=${customer.id}">
+                    <a href="/customer?action=edit&id=${customer.id}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                              class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>

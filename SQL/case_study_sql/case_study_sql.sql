@@ -584,18 +584,18 @@ having SUM(chi_phi_thue + ifnull( so_luong * gia,0)) > 1000000) temp );
  
  -- 18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng). --
 
---  set sql_safe_updates =0;
--- UPDATE khach_hang 
--- SET 
---     `status` = 1
--- WHERE
---     khach_hang.ma_khach_hang IN (SELECT 
---             ma_khach_hang
---         FROM
---             hop_dong
---         WHERE
---             YEAR(ngay_lam_hop_dong) < 2021);
---  set sql_safe_updates =1;
+  set sql_safe_updates =0;
+ UPDATE khach_hang 
+ SET 
+    `status` = 1
+ WHERE
+    khach_hang.ma_khach_hang IN (SELECT 
+            ma_khach_hang
+         FROM
+            hop_dong
+         WHERE
+YEAR(ngay_lam_hop_dong) < 2021);
+  set sql_safe_updates =1;
 
 -- SELECT 
 --     *

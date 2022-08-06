@@ -139,8 +139,8 @@
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="slary" class="form-label">Email</label>
-                        <input type="number" class="form-control" id="slary" name="slary" required>
+                        <label for="salary" class="form-label">Email</label>
+                        <input type="number" class="form-control" id="salary" name="salary" required>
                     </div>
                     <div class="col-md-12 ">
                         <label for="education" class="form-label">Education Degree Id</label>
@@ -215,7 +215,7 @@
                     </div>
                     <div class="col-md-12">
                         <label for="slaryEdit" class="form-label">Email</label>
-                        <input type="number" class="form-control" id="slaryEdit" name="slary" required>
+                        <input type="number" class="form-control" id="slaryEdit" name="salary" required>
                     </div>
                     <div class="col-md-12 ">
                         <label for="educationEdit" class="form-label">Education Degree Id</label>
@@ -270,7 +270,7 @@
         document.getElementById("idCardEdit").value = idCard;
         document.getElementById("phoneEdit").value = phone;
         document.getElementById("emailEdit").value = email;
-        document.getElementById("slaryEdit").value = salary;
+        document.getElementById("salaryEdit").value = salary;
         document.getElementById("educationEdit").value = educationDegreeId;
         document.getElementById("positionEdit").value = positionId;
         document.getElementById("divisionEdit").value = division;

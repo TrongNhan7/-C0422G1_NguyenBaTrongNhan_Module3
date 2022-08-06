@@ -39,12 +39,13 @@
             <th>Area</th>
             <th>Cost</th>
             <th>Max people</th>
-            <th>Rent Type </th>
+            <th>Rent Type ID</th>
             <th>Standard room</th>
             <th>Convenience</th>
             <th>Pool Area</th>
             <th>Number of floors</th>
             <th>Facility Free</th>
+            <th>Service Type ID</th>
             <th colspan="2" style="text-align: center">Actions</th>
         </tr>
         <c:forEach var="facility" items="${facilityList}">
@@ -54,28 +55,44 @@
                 <td><c:out value="${facility.area}"/></td>
                 <td><c:out value="${facility.cost}"/></td>
                 <td><c:out value="${facility.maxPeople}"/></td>
-                <td><c:out value="${facility.rentType}"/></td>
-                <c:if test="${facility.serviceType == 1}">
-                    <td><c:out value="${facility.standardRoom}"/></td>
-                    <td><c:out value=" ${facility.descriptionOtherConvenience}"/></td>
-                    <td><c:out value=" ${facility.areaPool}"/></td>
-                    <td><c:out value=" ${facility.numberOfFloors}"/></td>
-                    <td> X</td>
-                </c:if>
-                <c:if test="${facility.serviceType == 2}">
-                    <td><c:out value="${facility.standardRoom}"/></td>
-                    <td><c:out value="${facility.descriptionOtherConvenience}"/></td>
-                    <td> X</td>
-                    <td><c:out value="${facility.numberOfFloors}"/></td>
-                    <td> X</td>
-                </c:if>
-                <c:if test="${facility.serviceType == 3}">
-                    <td> X</td>
-                    <td> X</td>
-                    <td> X</td>
-                    <td> X</td>
-                    <td><c:out value=" ${facility.facilityFree}"/></td>
-                </c:if>
+                <c:forEach var="rentType" items="${rentTypeServices}">
+                    <c:if test="${rentType.rentTypeId==facility.rentTypeId}">
+                        <td>${rentType.rentTypeName}</td>
+                    </c:if>
+                </c:forEach>
+                <td><c:out value="${facility.standardRoom}"/></td>
+                <td><c:out value=" ${facility.descriptionOtherConvenience}"/></td>
+                <td><c:out value=" ${facility.areaPool}"/></td>
+                <td><c:out value=" ${facility.numberOfFloors}"/></td>
+                <td><c:out value=" ${facility.serviceFree}"/></td
+                <c:forEach var="facilityTypes" items="${facilityTypes}">
+                    <c:if test="${facilityTypes.facilityTypeId==facility.serviceTypeId}">
+                        <td>${facilityTypes.facilityTypeName}</td>
+                    </c:if>
+                </c:forEach>
+                    <%--                <c:choose>--%>
+                    <%--                <c:when test="${facility.serviceTypeId == 1}">--%>
+                    <%--                    <td><c:out value="${facility.standardRoom}"/></td>--%>
+                    <%--                    <td><c:out value=" ${facility.descriptionOtherConvenience}"/></td>--%>
+                    <%--                    <td><c:out value=" ${facility.areaPool}"/></td>--%>
+                    <%--                    <td><c:out value=" ${facility.numberOfFloors}"/></td>--%>
+                    <%--                    <td> X</td>--%>
+                    <%--                </c:when>--%>
+                    <%--                <c:when test="${facility.serviceTypeId == 2}">--%>
+                    <%--                    <td><c:out value="${facility.standardRoom}"/></td>--%>
+                    <%--                    <td><c:out value="${facility.descriptionOtherConvenience}"/></td>--%>
+                    <%--                    <td> X</td>--%>
+                    <%--                    <td><c:out value="${facility.numberOfFloors}"/></td>--%>
+                    <%--                    <td> X</td>--%>
+                    <%--                </c:when>--%>
+                    <%--                <c:when test="${facility.serviceTypeId == 3}">--%>
+                    <%--                    <td> X</td>--%>
+                    <%--                    <td> X</td>--%>
+                    <%--                    <td> X</td>--%>
+                    <%--                    <td> X</td>--%>
+                    <%--                    <td><c:out value=" ${facility.facilityFree}"/></td>--%>
+                    <%--                </c:when>--%>
+                    <%--                </c:choose>--%>
                 <td style="text-align: center">
                     <a href="/facility?action=edit&id=${facility.id}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -87,7 +104,8 @@
                     </a>
                 </td>
                 <td style="text-align: center">
-                    <button onclick="showInfoDelete('${facility.id}','${facility.nameService}')" type="button" class="btn btn-primary"
+                    <button onclick="showInfoDelete('${facility.id}','${facility.nameService}')" type="button"
+                            class="btn btn-primary"
                             data-bs-toggle="modal" data-bs-target="#delete">
                         Delete
                     </button>

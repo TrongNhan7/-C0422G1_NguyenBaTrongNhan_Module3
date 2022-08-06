@@ -24,6 +24,9 @@
 
 
 </div>
+<c:if test="${mess!=null}">
+    <p class="text-danger" align="center" style="font-size: 50px">${mess}</p>
+</c:if>
 <div class="container-fluid ">
     <div class="row">
         <div class="col-lg-3">
@@ -69,8 +72,8 @@
                         </select>
                     </div>
                     <div class="col-md-12 ">
-                        <label for="CustomerTypeId" class="form-label">CustomerTypeId</label>
-                        <select name="customertypeid" id="CustomerTypeId">
+                        <label for="customerTypeId" class="form-label">CustomerTypeId</label>
+                        <select name="customerTypeId" id="customerTypeId">
                             <option value="1">Diamond</option>
                             <option value="2">Platium</option>
                             <option value="3">Gold</option>
