@@ -65,8 +65,10 @@ public class UserServlet extends HttpServlet {
                     break;
                 case "findByCountry":
                     findByCountry(request, response);
+                    break;
                 case "selectUserSortName":
                     selectUserSortName(request, response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -74,22 +76,22 @@ public class UserServlet extends HttpServlet {
     }
 
     private void findByCountry(HttpServletRequest request, HttpServletResponse response) {
-        String country = request.getParameter("country");
-        List<User> userList = userService.selectUserByCountry(country);
-        RequestDispatcher dispatcher;
-        if (userList.size() == 0) {
-            dispatcher = request.getRequestDispatcher("error-404.jsp");
-        } else {
-            request.setAttribute("listUser", userList);
-            dispatcher = request.getRequestDispatcher("user/list.jsp");
-        }
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            String country = request.getParameter("country");
+            List<User> userList = userService.selectUserByCountry(country);
+            RequestDispatcher dispatcher;
+            if (userList.size() == 0) {
+                dispatcher = request.getRequestDispatcher("error-404.jsp");
+            } else {
+                request.setAttribute("listUser", userList);
+                dispatcher = request.getRequestDispatcher("user/list.jsp");
+            }
+            try {
+                dispatcher.forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
 

@@ -62,7 +62,7 @@ public class Facility {
         this.nameService = nameService;
     }
 
-    public double getArea() {
+    public int getArea() {
         return area;
     }
 

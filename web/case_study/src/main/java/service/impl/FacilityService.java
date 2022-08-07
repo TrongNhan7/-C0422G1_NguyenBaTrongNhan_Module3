@@ -19,21 +19,26 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public boolean createFacility(Facility facility) {
-        return false;
+        return facilityRepository.createFacility(facility);
     }
 
     @Override
     public boolean deleteFacility(int id) {
-        return false;
+        return facilityRepository.deleteFacility(id);
     }
 
     @Override
     public boolean editFacility(Facility facility) {
-        return false;
+        return facilityRepository.editFacility(facility);
     }
 
     @Override
-    public Customer findByIdFacility(int id) {
-        return null;
+    public Facility findByIdFacility(int id) {
+        return facilityRepository.findByIdFacility(id);
+    }
+
+    @Override
+    public List<Facility> findFacilityByName(String name) {
+        return facilityRepository.findFacilityByName(name);
     }
 }

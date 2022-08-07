@@ -14,6 +14,7 @@ public interface IFacilityRepository {
 
     boolean editFacility(Facility facility);
 
-    Customer findByIdFacility(int id);
+    Facility findByIdFacility(int id);
 
+    List<Facility> findFacilityByName(String name);
 }

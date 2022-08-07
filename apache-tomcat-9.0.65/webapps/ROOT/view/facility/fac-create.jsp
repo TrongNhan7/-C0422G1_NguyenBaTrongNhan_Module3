@@ -21,85 +21,62 @@
         </div>
     </div>
 </nav>
-
-
 </div>
+
+<c:if test="${mess!=null}">
+    <p class="text-danger" align="center" style="font-size: 50px">${mess}</p>
+</c:if>
 <div class="container-fluid ">
     <div class="row">
-    <div class="col-lg-3">
-        <img src="img\4056083.jpg" class="w-100 " style="height: 300px">
-        <img src="img\biet-thu.jpg" class="w-100 mt-3" style="height: 300px">
-    </div>
-    <div class="col-lg-6">
-        <h1>Create Facility</h1>
-        <form action="/facility?action=create" method="post">
-            <div class="col-lg-12">
-                <label for="facilityType">Choose a service:</label>
-                <select onchange="chooseServiceType()" id="facilityType">
+        <div class="col-lg-3">
+            <img src="img\4056083.jpg" class="w-100 " style="height: 300px">
+            <img src="img\biet-thu.jpg" class="w-100 mt-3" style="height: 300px">
+        </div>
+
+        <div class="col-lg-6">
+            <h1>Create Facility</h1>
+            <form action="/facility?action=create" method="post">
+                <p>Choose a service:</p>
+                <select onchange="chooseServiceType()" id="facilityType" name="serviceTypeId">
                     <option value="None">Choose a service:</option>
-                    <option value="Villa">Villa</option>
-                    <option value="House">House</option>
-                    <option value="Room">Room</option>
+                    <option value="1">Villa</option>
+                    <option value="2">House</option>
+                    <option value="3">Room</option>
                 </select>
-            </div>
-            <table>
-                <div class="col-md-12">
-                    <label for="name" class="form-label">Name Service</label>
-                    <input type="text" class="form-control" id="name" name="nameFacility" required>
-                </div>
-                <div class="col-md-12">
-                    <label for="area" class="form-label">Area</label>
-                    <input type="number" class="form-control" id="area" name="area" required>
-                </div>
-                <div class="col-md-12">
-                    <label for="cost" class="form-label">Cost</label>
-                    <input type="number" class="form-control" id="cost" name="cost" required>
-                </div>
-                <div class="col-md-12">
-                    <label for="inputAddress2" class="form-label">Max people </label>
-                    <input type="text" class="form-control" id="inputAddress2" name="max_people" required>
-                </div>
-                <div class="col-md-12">
-                    <label for="inputCity" class="form-label">Rent Type</label>
-                    <input type="number" class="form-control" id="inputCity" name="rent_type_id" required>
-                </div>
-                <div class="col-md-12 " id="s1" style="display: none">
-                    <label for="standard_room" class="form-label">Standard room</label>
-                    <input type="text" class="form-control" id="standard_room" name="standard_room" required>
-                </div>
-
-                <div class="col-md-12 " id="s2" style="display: none">
-                    <label for="description_other_convenience" class="form-label">Convenience</label>
+                <table>
+                    <input type="text" class="form-control" id="name" name="nameFacility" placeholder="Name Service">
+                    <input type="number" class="form-control" id="area" name="area" placeholder="Area">
+                    <input type="number" class="form-control" id="cost" name="cost" placeholder="Cost">
+                    <input type="text" class="form-control" id="max_people" name="max_people" placeholder="Max people">
+                    <input type="text" class="form-control" id="standard_room" name="standard_room"
+                           placeholder="Standard room">
                     <input type="text" class="form-control" id="description_other_convenience"
-                           name="description_other_convenience" required>
-                </div>
+                           name="description_other_convenience" placeholder="Convenience">
+                    <input type="number" class="form-control" id="pool_area" name="pool_area" placeholder="Pool Area">
+                    <input type="number" class="form-control" id="number_of_floors" name="number_of_floors"
+                           placeholder="Number of floors">
+                    <input type="text" class="form-control" id="facility_free" name="facility_free"
+                           placeholder="Facility Free">
+                    <select name="rent_type_id" id="rent_type_id">
+                        <option value="none">Rent Type</option>
+                        <option value="1">Year</option>
+                        <option value="2">Month</option>
+                        <option value="3">Day</option>
+                        <option value="4">Hour</option>
+                    </select>
+                    <div class="col-12 mt-3" align="center">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </table>
+            </form>
+        </div>
 
-                <div class="col-md-12 " id="s3" style="display: none">
-                    <label for="pool_area" class="form-label">Pool Area</label>
-                    <input type="number" class="form-control" id="pool_area" name="pool_area" required>
-                </div>
 
-                <div class="col-md-12" id="s4" style="display: none">
-                    <label for="number_of_floors" class="form-label">Number of floors</label>
-                    <input type="number" class="form-control" id="number_of_floors" name="number_of_floors" required>
-                </div>
-
-                <div class="col-md-12 " id="s5" style="display: none">
-                    <label for="facility_free" class="form-label">Facility Free</label>
-                    <input type="text" class="form-control" id="facility_free" name="facility_free" required>
-                </div>
-
-                <div class="col-12 mt-3" align="center">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </table>
-        </form>
+        <div class="col-lg-3">
+            <img src="img\4056083.jpg" class="w-100 " style="height: 300px">
+            <img src="img\biet-thu.jpg" class="w-100 mt-3" style="height: 300px">
+        </div>
     </div>
-    <div class="col-lg-3">
-        <img src="img\4056083.jpg" class="w-100 " style="height: 300px">
-        <img src="img\biet-thu.jpg" class="w-100 mt-3" style="height: 300px">
-    </div>
-</div>
 </div>
 <script src="js/bootstrap.min.js"></script>
 <script>
@@ -107,36 +84,50 @@
         let type = document.getElementById("facilityType").value;
         switch (type) {
             case 'None':
-                document.getElementById("s1").style.display = "none";
-                document.getElementById("s2").style.display = "none";
-                document.getElementById("s3").style.display = "none";
-                document.getElementById("s4").style.display = "none";
-                document.getElementById("s5").style.display = "none";
+                document.getElementById("standard_room").style.display = "none";
+                document.getElementById("description_other_convenience").style.display = "none";
+                document.getElementById("pool_area").style.display = "none";
+                document.getElementById("number_of_floors").style.display = "none";
+                document.getElementById("facility_free").style.display = "none";
                 break;
-            case "Villa":
-                document.getElementById("s1").style.display = "block";
-                document.getElementById("s2").style.display = "block";
-                document.getElementById("s3").style.display = "block";
-                document.getElementById("s4").style.display = "block";
-                document.getElementById("s5").style.display = "none";
+            case "1":
+                document.getElementById("standard_room").style.display = "block";
+                document.getElementById("description_other_convenience").style.display = "block";
+                document.getElementById("pool_area").style.display = "block";
+                document.getElementById("number_of_floors").style.display = "block";
+                document.getElementById("facility_free").style.display = "none";
+                document.getElementById("facility_free").value = "X";
                 break;
-            case "House":
-                document.getElementById("s1").style.display = "block";
-                document.getElementById("s2").style.display = "block";
-                document.getElementById("s4").style.display = "block";
-                document.getElementById("s5").style.display = "none";
-                document.getElementById("s3").style.display = "none";
+            case "2":
+                document.getElementById("standard_room").style.display = "block";
+                document.getElementById("description_other_convenience").style.display = "block";
+                document.getElementById("pool_area").style.display = "none";
+                document.getElementById("pool_area").value = 0;
+                document.getElementById("number_of_floors").style.display = "block";
+                document.getElementById("facility_free").style.display = "none";
+                document.getElementById("facility_free").value = "X";
                 break;
-            case "Room":
-                document.getElementById("s1").style.display = "none";
-                document.getElementById("s2").style.display = "none";
-                document.getElementById("s3").style.display = "none";
-                document.getElementById("s4").style.display = "none";
-                document.getElementById("s5").style.display = "block";
+            case "3":
+                document.getElementById("standard_room").style.display = "none";
+                document.getElementById("description_other_convenience").style.display = "block";
+                document.getElementById("pool_area").style.display = "none";
+                document.getElementById("number_of_floors").style.display = "none";
+                document.getElementById("facility_free").style.display = "block";
+                document.getElementById("standard_room").value = "X";
+                document.getElementById("pool_area").value = 0;
+                document.getElementById("number_of_floors").value = 0;
                 break;
         }
     }
 </script>
 
+<%--                    <div class="col-md-12 ">--%>
+<%--                        <label for="serviceTypeId" class="form-label">Rent Type</label>--%>
+<%--                        <select name="serviceTypeId" id="serviceTypeId">--%>
+<%--                            <option value="1">Villa</option>--%>
+<%--                            <option value="2">House</option>--%>
+<%--                            <option value="3">Room</option>--%>
+<%--                        </select>--%>
+<%--                    </div>--%>
 </body>
 </html>
