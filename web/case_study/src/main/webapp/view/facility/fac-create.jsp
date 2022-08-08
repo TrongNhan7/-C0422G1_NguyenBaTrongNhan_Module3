@@ -45,6 +45,9 @@
                 </select>
                 <table>
                     <input type="text" class="form-control" id="name" name="nameFacility" placeholder="Name Service">
+                    <div style="color: red">
+                        ${name}
+                    </div>
                     <input type="number" class="form-control" id="area" name="area" placeholder="Area">
                     <input type="number" class="form-control" id="cost" name="cost" placeholder="Cost">
                     <input type="text" class="form-control" id="max_people" name="max_people" placeholder="Max people">
@@ -55,6 +58,9 @@
                     <input type="number" class="form-control" id="pool_area" name="pool_area" placeholder="Pool Area">
                     <input type="number" class="form-control" id="number_of_floors" name="number_of_floors"
                            placeholder="Number of floors">
+                    <div style="color: red">
+                        ${numberFlo}
+                    </div>
                     <input type="text" class="form-control" id="facility_free" name="facility_free"
                            placeholder="Facility Free">
                     <select name="rent_type_id" id="rent_type_id">

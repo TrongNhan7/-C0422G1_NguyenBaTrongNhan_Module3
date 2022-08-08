@@ -40,6 +40,9 @@
                     <div class="col-md-12">
                         <label for="name" class="form-label">Name Customer</label>
                         <input type="text" class="form-control" id="name" name="nameCustomer" required>
+                        <div style="color: red">
+                            ${name}
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <label for="birthday" class="form-label">Birthday</label>
@@ -49,14 +52,23 @@
                     <div class="col-md-12">
                         <label for="idCard" class="form-label">Id Card </label>
                         <input type="text" class="form-control" id="idCard" name="idCard" required>
+                        <div style="color: red">
+                            ${Cmnd}
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <label for="phone" class="form-label">Phone</label>
                         <input type="number" class="form-control" id="phone" name="phone" required>
+                        <div style="color: red">
+                            ${phone}
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email" required>
+                        <div style="color: red">
+                            ${phone}
+                        </div>
                     </div>
 
                     <div class="col-md-12 ">

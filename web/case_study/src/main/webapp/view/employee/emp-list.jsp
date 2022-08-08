@@ -16,6 +16,15 @@
                     <a class="btn btn-primary" href="/index.jsp" role="button">Home</a>
                 </li>
                 <li class="nav-item ms-3">
+                    <a class="btn btn-primary" href="/facility" role="button">Facility</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="btn btn-primary" href="/customer" role="button">Customer</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="btn btn-primary" href="/contract" role="button">Contract</a>
+                </li>
+                <li class="nav-item ms-3">
                     <button type="button" class="btn btn-primary"
                             data-bs-toggle="modal" data-bs-target="#addNewEmployee">
                         Add New Employee
@@ -41,46 +50,48 @@
             <th>Name</th>
             <th>date_of_birth</th>
             <th>Id Card</th>
+            <th>Salary</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Salary</th>
-            <th>Education Degree Id</th>
-            <th>Position Id</th>
+            <th>Address</th>
+            <th>Position</th>
+            <th>Education Degree</th>
             <th>Division</th>
             <th colspan="2" style="text-align: center">Actions</th>
         </tr>
-        <%--        <c:forEach var="employee" items="${employeeList}">--%>
-        <tr>
-            <td><c:out value="${employee.id}"/>ádasd</td>
-            <td><c:out value="${employee.nameEmployee}"/></td>
-            <td><c:out value="${employee.date_of_birth}"/></td>
-            <td><c:out value="${employee.idCard}"/></td>
-            <td><c:out value="${employee.phone}"/></td>
-            <td><c:out value="${employee.email}"/></td>
-            <td><c:out value="${employee.salary}"/></td>
-            <td><c:out value="${employee.educationDegreeId}"/></td>
-            <td><c:out value="${employee.positionId}"/></td>
-            <td><c:out value="${employee.division}"/></td>
+        <c:forEach var="employee" items="${employeeList}">
+            <tr>
+                <td><c:out value="${employee.id}"/></td>
+                <td><c:out value="${employee.name}"/></td>
+                <td><c:out value="${employee.birthday}"/></td>
+                <td><c:out value="${employee.idCard}"/></td>
+                <td><c:out value="${employee.salary}"/></td>
+                <td><c:out value="${employee.phoneNumber}"/></td>
+                <td><c:out value="${employee.email}"/></td>
+                <td><c:out value="${employee.address}"/></td>
+                <td><c:out value="${employee.namePosition}"/></td>
+                <td><c:out value="${employee.nameLevel}"/></td>
+                <td><c:out value="${employee.namePart}"/></td>
 
-            <td style="text-align: center">
-                <button onclick="showInfoEdit('${employee.id}','${employee.nameEmployee}',
-                        '${employee.date_of_birth}','${employee.idCard}','${employee.phone}'
-                        ,'${employee.email}','${employee.salary}','${employee.educationDegreeId}',
-                        '${employee.positionId}','${employee.division}')" type="button"
-                        class="btn btn-primary"
-                        data-bs-toggle="modal" data-bs-target="#editEmployee">
-                    Edit
-                </button>
-            </td>
-            <td style="text-align: center">
-                <button onclick="showInfoDelete('${employee.id}','${employee.nameEmployee}')" type="button"
-                        class="btn btn-primary"
-                        data-bs-toggle="modal" data-bs-target="#delete">
-                    Delete
-                </button>
-            </td>
-        </tr>
-        <%--        </c:forEach>--%>
+                <td style="text-align: center">
+                    <button onclick="showInfoEdit('${employee.id}','${employee.name}',
+                            '${employee.birthday}','${employee.idCard}','${employee.salary}'
+                            ,'${employee.phoneNumber}','${employee.email}','${employee.address}','${employee.namePosition}',
+                            '${employee.nameLevel}','${employee.namePart}')" type="button"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal" data-bs-target="#editEmployee">
+                        Edit
+                    </button>
+                </td>
+                <td style="text-align: center">
+                    <button onclick="showInfoDelete('${employee.id}','${employee.name}')" type="button"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal" data-bs-target="#delete">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </c:forEach>
     </table>
 
 </div>
@@ -131,6 +142,10 @@
                         <input type="text" class="form-control" id="idCard" name="idCard" required>
                     </div>
                     <div class="col-md-12">
+                        <label for="salary" class="form-label">Salary</label>
+                        <input type="number" class="form-control" id="salary" name="salary" required>
+                    </div>
+                    <div class="col-md-12">
                         <label for="phone" class="form-label">Phone</label>
                         <input type="number" class="form-control" id="phone" name="phone" required>
                     </div>
@@ -139,18 +154,10 @@
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="salary" class="form-label">Email</label>
-                        <input type="number" class="form-control" id="salary" name="salary" required>
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" required>
                     </div>
-                    <div class="col-md-12 ">
-                        <label for="education" class="form-label">Education Degree Id</label>
-                        <select name="education" id="education">
-                            <option value="1">Trung cấp</option>
-                            <option value="2">Cao đẳng</option>
-                            <option value="3">Đại học</option>
-                            <option value="4">Sau Đại học</option>
-                        </select>
-                    </div>
+
                     <div class="col-md-12 ">
                         <label for="position" class="form-label">Position</label>
                         <select name="position" id="position">
@@ -162,6 +169,17 @@
                             <option value="6">Giám đốc</option>
                         </select>
                     </div>
+
+                    <div class="col-md-12 ">
+                        <label for="education" class="form-label">Education Degree Id</label>
+                        <select name="education" id="education">
+                            <option value="1">Trung cấp</option>
+                            <option value="2">Cao đẳng</option>
+                            <option value="3">Đại học</option>
+                            <option value="4">Sau Đại học</option>
+                        </select>
+                    </div>
+
                     <div class="col-md-12 ">
                         <label for="division" class="form-label">Division</label>
                         <select name="division" id="division">
@@ -206,6 +224,10 @@
                         <input type="text" class="form-control" id="idCardEdit" name="idCard" required>
                     </div>
                     <div class="col-md-12">
+                        <label for="salaryEdit" class="form-label">Salary</label>
+                        <input type="number" class="form-control" id="salaryEdit" name="salary" required>
+                    </div>
+                    <div class="col-md-12">
                         <label for="phoneEdit" class="form-label">Phone</label>
                         <input type="number" class="form-control" id="phoneEdit" name="phone" required>
                     </div>
@@ -214,8 +236,8 @@
                         <input type="email" class="form-control" id="emailEdit" name="email" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="slaryEdit" class="form-label">Email</label>
-                        <input type="number" class="form-control" id="slaryEdit" name="salary" required>
+                        <label for="addressEdit" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="addressEdit" name="addressEdit" required>
                     </div>
                     <div class="col-md-12 ">
                         <label for="educationEdit" class="form-label">Education Degree Id</label>
@@ -262,8 +284,10 @@
         document.getElementById("deleteId").value = id;
         document.getElementById("deleteName").innerText = name;
     }
-    function showInfoEdit(id,nameEmployee,date_of_birth,idCard,phone,email,
-                          salary,educationDegreeId,positionId,division) {
+
+
+    function showInfoEdit(id, nameEmployee, date_of_birth, idCard,salary, phone, email
+        ,address, positionId,educationDegreeId, division) {
         document.getElementById("deleteId").value = id;
         document.getElementById("nameEdit").value = nameEmployee;
         document.getElementById("birthdayEdit").value = date_of_birth;
@@ -271,6 +295,7 @@
         document.getElementById("phoneEdit").value = phone;
         document.getElementById("emailEdit").value = email;
         document.getElementById("salaryEdit").value = salary;
+        document.getElementById("addressEdit").value = address;
         document.getElementById("educationEdit").value = educationDegreeId;
         document.getElementById("positionEdit").value = positionId;
         document.getElementById("divisionEdit").value = division;

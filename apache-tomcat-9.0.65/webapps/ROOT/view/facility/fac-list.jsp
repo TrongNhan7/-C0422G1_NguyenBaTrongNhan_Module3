@@ -16,6 +16,18 @@
                     <a class="btn btn-primary" href="/index.jsp" role="button">Home</a>
                 </li>
                 <li class="nav-item ms-3">
+                    <a class="btn btn-primary" href="/customer" role="button">Customer</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="btn btn-primary" href="/employee" role="button">Employee</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="btn btn-primary" href="/contract" role="button">Contract</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="btn btn-primary" href="/facility?action=create" role="button">Add new Facility</a>
+                </li>
+                <li class="nav-item ms-3">
                     <a class="btn btn-primary" href="/facility" role="button">Back to list</a>
                 </li>
             </ul>
@@ -52,26 +64,30 @@
     <c:forEach var="facility" items="${facilityList}">
         <tr>
             <td>${facility.id}</td>
-            <c:forEach var="facilityTypes" items="${facilityTypes}">
-                <c:if test="${facilityTypes.facilityTypeId==facility.serviceTypeId}">
-                    <td>${facilityTypes.facilityTypeName}</td>
-                </c:if>
-            </c:forEach>
+            <td>
+                <c:forEach var="facilityTypes" items="${facilityTypes}">
+                    <c:if test="${facilityTypes.facilityTypeId==facility.serviceTypeId}">
+                       ${facilityTypes.facilityTypeName}
+                    </c:if>
+                </c:forEach>
+            </td>
             <td>${facility.nameService}</td>
             <td>${facility.area}</td>
             <td>${facility.cost}</td>
             <td>${facility.maxPeople}</td>
-            <c:forEach var="rentType" items="${rentTypeServices}">
-                <c:if test="${rentType.rentTypeId==facility.rentTypeId}">
-                    <td>${rentType.rentTypeName}</td>
-                </c:if>
-            </c:forEach>
+            <td>
+                <c:forEach var="rentType" items="${rentTypeServices}">
+                    <c:if test="${rentType.rentTypeId==facility.rentTypeId}">
+                        ${rentType.rentTypeName}
+                    </c:if>
+                </c:forEach>
+            </td>
             <td>${facility.standardRoom}</td>
             <td>${facility.descriptionOtherConvenience}</td>
             <td>${facility.areaPool}</td>
             <td>${facility.numberOfFloors}</td>
-            <td>${facility.serviceFree}</td
-            <td style="text-align: center">
+            <td>${facility.serviceFree}</td>
+            <td  style="text-align: center">
                 <a href="/facility?action=edit&id=${facility.id}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                          class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -81,7 +97,7 @@
                     </svg>
                 </a>
             </td>
-            <td style="text-align: center">
+            <td  style="text-align: center">
                 <button onclick="showInfoDelete('${facility.id}','${facility.nameService}')" type="button"
                         class="btn btn-primary"
                         data-bs-toggle="modal" data-bs-target="#delete">

@@ -16,6 +16,15 @@
                     <a class="btn btn-primary" href="/index.jsp" role="button">Home</a>
                 </li>
                 <li class="nav-item ms-3">
+                    <a class="btn btn-primary" href="/facility" role="button">Facility</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="btn btn-primary" href="/employee" role="button">Employee</a>
+                </li>
+                <li class="nav-item ms-3">
+                    <a class="btn btn-primary" href="/contract" role="button">Contract</a>
+                </li>
+                <li class="nav-item ms-3">
                     <a class="btn btn-primary" href="/customer?action=create" role="button">Add New Customer</a>
                 </li>
             </ul>

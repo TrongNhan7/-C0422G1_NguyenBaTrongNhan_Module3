@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "CustomerServlet", urlPatterns = "/customer")
 public class CustomerServlet extends HttpServlet {
@@ -49,7 +50,29 @@ public class CustomerServlet extends HttpServlet {
         try {
             switch (action) {
                 case "create":
-                    createCustomer(request, response);
+                    String name = request.getParameter("nameCustomer");
+                    String birthday = request.getParameter("birthday");
+                    String idCard = request.getParameter("idCard");
+                    String phone = request.getParameter("phone");
+                    String email = request.getParameter("email");
+                    String address = request.getParameter("address");
+                    Boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
+                    int customerTypeId = Integer.parseInt(request.getParameter("customerTypeId"));
+                    Customer customer = new Customer(name, birthday, gender, idCard, phone, email, address, customerTypeId);
+                    customerService.createCustomer(customer);
+
+                    Map<String, String> mapErrors = this.customerService.createCustomer(customer);
+                    if (mapErrors.size() > 0) {
+                        for (Map.Entry<String, String> entry : mapErrors.entrySet()) {
+                            request.setAttribute(entry.getKey(), entry.getValue());
+                        }
+
+                        request.getRequestDispatcher("view/customer/cus-create.jsp")
+                                .forward(request, response);
+                    }
+                    customerService.createCustomer(customer);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/cus-create.jsp");
+                    dispatcher.forward(request, response);
                     break;
                 case "deleteCustomer":
                     deleteCustomer(request, response);
@@ -150,14 +173,15 @@ public class CustomerServlet extends HttpServlet {
         Boolean gender = Boolean.parseBoolean(request.getParameter("gender"));
         int customerTypeId = Integer.parseInt(request.getParameter("customerTypeId"));
         Customer customer = new Customer(name, birthday, gender, idCard, phone, email, address, customerTypeId);
-        boolean check = customerService.createCustomer(customer);
-        String mess = null;
-        if (check) {
-            mess = ("Thêm mới thành công");
-        } else {
-            mess = ("Thêm mới thất bại");
-        }
-        request.setAttribute("mess", mess);
+
+//        String mess = null;
+//        if (check) {
+//            mess = ("Thêm mới thành công");
+//        } else {
+//            mess = ("Thêm mới thất bại");
+//        }
+//        request.setAttribute("mess", mess);
+        customerService.createCustomer(customer);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/cus-create.jsp");
         dispatcher.forward(request, response);
     }

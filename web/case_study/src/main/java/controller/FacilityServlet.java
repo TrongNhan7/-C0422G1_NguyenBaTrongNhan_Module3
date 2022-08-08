@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "FacilityServlet", urlPatterns = "/facility")
 public class FacilityServlet extends HttpServlet {
@@ -28,6 +29,7 @@ public class FacilityServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -47,13 +49,47 @@ public class FacilityServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
         }
         switch (action) {
             case "create":
-                createFacility(request, response);
+                String name = request.getParameter("nameFacility");
+                int area = Integer.parseInt(request.getParameter("area"));
+                double cost = Double.parseDouble(request.getParameter("cost"));
+                int maxPeople = Integer.parseInt(request.getParameter("max_people"));
+                String standardRoom = request.getParameter("standard_room");
+                String convenience = request.getParameter("description_other_convenience");
+                double areaPool = Double.parseDouble(request.getParameter("pool_area"));
+                int numberOfFloors = Integer.parseInt(request.getParameter("number_of_floors"));
+                String serviceFree = request.getParameter("facility_free");
+                int rentTypeId = Integer.parseInt(request.getParameter("rent_type_id"));
+                int serviceTypeId = Integer.parseInt(request.getParameter("serviceTypeId"));
+                Facility facility = new Facility(name, area, cost, maxPeople, standardRoom, convenience,
+                        areaPool, numberOfFloors, serviceFree, rentTypeId, serviceTypeId);
+
+                Map<String, String> mapErrors = this.facilityService.createFacility(facility);
+
+                if (mapErrors.size() > 0) {
+                    for (Map.Entry<String, String> entry : mapErrors.entrySet()) {
+                        request.setAttribute(entry.getKey(), entry.getValue());
+                    }
+
+                    request.getRequestDispatcher("view/facility/fac-create.jsp")
+                            .forward(request, response);
+                }
+
+                facilityService.createFacility(facility);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("view/facility/fac-create.jsp");
+                try {
+                    dispatcher.forward(request, response);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
             case "deleteFacility":
                 deleteFacility(request, response);
@@ -134,7 +170,7 @@ public class FacilityServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("idFacility"));
         boolean check = facilityService.deleteFacility(id);
         String mess = null;
-        if (check) {
+        if (!check) {
             mess = ("Delete thành công");
         } else {
             mess = ("Delete thất bại");
@@ -157,37 +193,31 @@ public class FacilityServlet extends HttpServlet {
 
     }
 
-    private void createFacility(HttpServletRequest request, HttpServletResponse response) {
-        String name = request.getParameter("nameFacility");
-        int area = Integer.parseInt(request.getParameter("area"));
-        double cost = Double.parseDouble(request.getParameter("cost"));
-        int maxPeople = Integer.parseInt(request.getParameter("max_people"));
-        String standardRoom = request.getParameter("standard_room");
-        String convenience = request.getParameter("description_other_convenience");
-        double areaPool = Double.parseDouble(request.getParameter("pool_area"));
-        int numberOfFloors = Integer.parseInt(request.getParameter("number_of_floors"));
-        String serviceFree = request.getParameter("facility_free");
-        int rentTypeId = Integer.parseInt(request.getParameter("rent_type_id"));
-        int serviceTypeId = Integer.parseInt(request.getParameter("serviceTypeId"));
-        Facility facility = new Facility(name, area, cost, maxPeople, standardRoom, convenience,
-                areaPool, numberOfFloors, serviceFree, rentTypeId, serviceTypeId);
-        boolean check = facilityService.createFacility(facility);
-        String mess = null;
-        if (check) {
-            mess = ("Thêm mới thành công");
-        } else {
-            mess = ("Thêm mới thất bại");
-        }
-        request.setAttribute("mess", mess);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/facility/fac-create.jsp");
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void createFacility(HttpServletRequest request, HttpServletResponse response) {
+//        String name = request.getParameter("nameFacility");
+//        int area = Integer.parseInt(request.getParameter("area"));
+//        double cost = Double.parseDouble(request.getParameter("cost"));
+//        int maxPeople = Integer.parseInt(request.getParameter("max_people"));
+//        String standardRoom = request.getParameter("standard_room");
+//        String convenience = request.getParameter("description_other_convenience");
+//        double areaPool = Double.parseDouble(request.getParameter("pool_area"));
+//        int numberOfFloors = Integer.parseInt(request.getParameter("number_of_floors"));
+//        String serviceFree = request.getParameter("facility_free");
+//        int rentTypeId = Integer.parseInt(request.getParameter("rent_type_id"));
+//        int serviceTypeId = Integer.parseInt(request.getParameter("serviceTypeId"));
+//        Facility facility = new Facility(name, area, cost, maxPeople, standardRoom, convenience,
+//                areaPool, numberOfFloors, serviceFree, rentTypeId, serviceTypeId);
+//        facilityService.createFacility(facility);
+//
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("view/facility/fac-create.jsp");
+//        try {
+//            dispatcher.forward(request, response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void showEditFacility(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));

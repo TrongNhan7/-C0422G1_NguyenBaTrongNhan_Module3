@@ -232,3 +232,4 @@ VALUES ("1", "5", "2", "4"),
 
 select * from khach_hang;
 
+

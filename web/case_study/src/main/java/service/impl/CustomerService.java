@@ -5,7 +5,9 @@ import repository.ICustomerRepository;
 import repository.impl.CustomerRepository;
 import service.ICustomerService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CustomerService implements ICustomerService {
     ICustomerRepository customerRepository = new CustomerRepository();
@@ -16,8 +18,46 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public boolean createCustomer(Customer customer) {
-        return customerRepository.createCustomer(customer);
+    public Map<String,String> createCustomer(Customer customer) {
+        Map<String, String> mapErrors = new HashMap<>();
+
+        if (!customer.getNameCustomer().isEmpty()) {
+            if (!customer.getNameCustomer().matches("[A-Z][a-z]+( [A-Z][a-z]+)*")) {
+                mapErrors.put("name", "Please input right format!");
+            }
+        } else {
+            mapErrors.put("name", "Please input name!");
+        }
+
+        if (!customer.getPhone().isEmpty()) {
+            if (!customer.getPhone().matches("[0|(84)\\+][90|91][0-9]{7}")) {
+                mapErrors.put("phone", "Please input right format!");
+            }
+        } else {
+            mapErrors.put("phone", "Please input phone!");
+        }
+
+        if (!customer.getIdCard().isEmpty()) {
+            if (!customer.getIdCard().matches("([0-9]{9}|[0-9]{12})")) {
+                mapErrors.put("Cmnd", "Please input right format!");
+            }
+        } else {
+            mapErrors.put("Cmnd", "Please input IdCard!");
+        }
+
+        if (!customer.getEmail().isEmpty()) {
+            if (!customer.getEmail().matches("^\\w+@(\\w+\\.)+\\w+$")) {
+                mapErrors.put("email", "Please input right format!");
+            }
+        } else {
+            mapErrors.put("email", "Please input email!");
+        }
+
+        if (mapErrors.size() == 0) {
+            this.customerRepository.createCustomer(customer);
+        }
+
+        return mapErrors;
     }
 
     @Override

@@ -40,7 +40,7 @@
                             <a class="nav-link text-white" href="/facility">Service</a>
                         </li>
                         <li class="nav-item ms-5 text-white">
-                            <a class="nav-link text-white" href="#">Contract</a>
+                            <a class="nav-link text-white" href="/contract">Contract</a>
                         </li>
                     </ul>
                     <form class="d-flex mt-2">
