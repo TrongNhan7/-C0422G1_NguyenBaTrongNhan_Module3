@@ -12,8 +12,11 @@ public interface ICustomerService {
 
     boolean deleteCustomer(int id);
 
-    boolean editCustomer(Customer customer);
+    Map<String,String> editCustomer(Customer customer);
 
     Customer findByIdCustomer(int id);
 
+    Map<String, String> validate(Customer customer);
+
+     List<Customer> findByCustomer(String key);
 }

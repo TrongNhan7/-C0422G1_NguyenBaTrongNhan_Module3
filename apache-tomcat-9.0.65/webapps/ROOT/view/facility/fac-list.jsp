@@ -6,6 +6,8 @@
 <head>
     <title>User Management Application</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap520/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css"/>
 </head>
 <body class="bg-secondary">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -45,7 +47,8 @@
 <c:if test="${mess!=null}">
     <p class="text-danger" align="center" style="font-size: 50px">${mess}</p>
 </c:if>
-<table class="table table-dark table-striped">
+<table class="table table-striped table-bordered table table-dark table-striped" id="tableFacility">
+    <thead>
     <tr>
         <th>ID</th>
         <th>Service Type</th>
@@ -59,15 +62,18 @@
         <th>Pool Area</th>
         <th>Number of floors</th>
         <th>Facility Free</th>
-        <th colspan="2" style="text-align: center">Actions</th>
+        <th style="text-align: center">Actions</th>
+        <th style="text-align: center">Actions</th>
     </tr>
+    </thead>
+    <tbody>
     <c:forEach var="facility" items="${facilityList}">
         <tr>
             <td>${facility.id}</td>
             <td>
                 <c:forEach var="facilityTypes" items="${facilityTypes}">
                     <c:if test="${facilityTypes.facilityTypeId==facility.serviceTypeId}">
-                       ${facilityTypes.facilityTypeName}
+                        ${facilityTypes.facilityTypeName}
                     </c:if>
                 </c:forEach>
             </td>
@@ -87,7 +93,7 @@
             <td>${facility.areaPool}</td>
             <td>${facility.numberOfFloors}</td>
             <td>${facility.serviceFree}</td>
-            <td  style="text-align: center">
+            <td style="text-align: center">
                 <a href="/facility?action=edit&id=${facility.id}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                          class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -97,7 +103,7 @@
                     </svg>
                 </a>
             </td>
-            <td  style="text-align: center">
+            <td style="text-align: center">
                 <button onclick="showInfoDelete('${facility.id}','${facility.nameService}')" type="button"
                         class="btn btn-primary"
                         data-bs-toggle="modal" data-bs-target="#delete">
@@ -106,6 +112,7 @@
             </td>
         </tr>
     </c:forEach>
+    </tbody>
 </table>
 
 
@@ -155,6 +162,18 @@
 <%--                    </c:when>--%>
 <%--                </c:choose>--%>
 <script src="js/bootstrap.min.js"></script>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableFacility').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5
+        });
+    });
+</script>
 <script>
     function showInfoDelete(id, name) {
         document.getElementById("deleteId").value = id;

@@ -47,6 +47,9 @@
                     <div class="col-md-12">
                         <label for="birthday" class="form-label">Birthday</label>
                         <input type="date" class="form-control" id="birthday" name="birthday" required>
+                        <div style="color: red">
+                            ${email}
+                        </div>
                     </div>
 
                     <div class="col-md-12">
@@ -67,7 +70,7 @@
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email" required>
                         <div style="color: red">
-                            ${phone}
+                            ${email}
                         </div>
                     </div>
 

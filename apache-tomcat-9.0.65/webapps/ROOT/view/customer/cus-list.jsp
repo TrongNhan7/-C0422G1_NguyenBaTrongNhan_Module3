@@ -6,6 +6,8 @@
 <head>
     <title> Management Application</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap520/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css" />
 </head>
 <body class="bg-secondary">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,8 +30,8 @@
                     <a class="btn btn-primary" href="/customer?action=create" role="button">Add New Customer</a>
                 </li>
             </ul>
-            <form class="d-flex" action="/users?action=findByCountry" method="post">
-                <input class="form-control me-2" type="search" name="country" placeholder="Tìm kiếm"
+            <form class="d-flex" action="/customer?action=findByKey" method="post">
+                <input class="form-control me-2" type="search" name="key" placeholder="Tìm kiếm"
                        aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
@@ -44,7 +46,8 @@
     <c:if test="${mess!=null}">
         <p class="text-danger" align="center" style="font-size: 50px">${mess}</p>
     </c:if>
-    <table class="table table-dark table-striped">
+    <table  id="tableCustomer" class="table table-striped table-bordered table table-dark table-striped" style="width:100%">
+        <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -56,8 +59,11 @@
             <th>Customer Type Name</th>
             <th>Ardress</th>
             <th>Status</th>
-            <th colspan="2" style="text-align: center">Actions</th>
+            <th style="text-align: center">Actions</th>
+            <th style="text-align: center">Actions</th>
         </tr>
+        <thead>
+        <tbody>
         <c:forEach var="customer" items="${customerList}">
             <tr>
                 <td><c:out value="${customer.id}"/></td>
@@ -103,12 +109,13 @@
                 <td style="text-align: center">
                     <button onclick="showInfoDelete('${customer.id}','${customer.nameCustomer}')" type="button"
                             class="btn btn-primary"
-                            data-bs-toggle="modal" data-bs-target="#delete">
+                            data-bs-toggle="modal" dabta-s-target="#delete">
                         Delete
                     </button>
                 </td>
             </tr>
         </c:forEach>
+        <tbody>
     </table>
 
     <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -134,6 +141,18 @@
 
 </div>
 <script src="js/bootstrap.min.js"></script>
+<script src="jquery/jquery-3.5.1.min.js"></script>
+<script src="datatables/js/jquery.dataTables.min.js"></script>
+<script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tableCustomer').dataTable( {
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 5
+        } );
+    } );
+</script>
 <script>
     function showInfoDelete(id, name) {
         document.getElementById("deleteId").value = id;

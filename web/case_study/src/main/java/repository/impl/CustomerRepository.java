@@ -1,6 +1,7 @@
 package repository.impl;
 
 import model.customer.Customer;
+import model.facility.Facility;
 import repository.BaseRepository;
 import repository.ICustomerRepository;
 
@@ -25,6 +26,7 @@ public class CustomerRepository implements ICustomerRepository {
     private static final String EDIT_CUSTOMER = "update khach_hang" +
             " set ho_ten = ?, ngay_sinh = ?, gioi_tinh = ?, so_cmnd = ?, so_dien_thoai = ?, email = ?, dia_chi =?, ma_loai_khach=? where ma_khach_hang = ?;";
 
+    private static final String FIND_CUSTOMER = "CALL find_by_sp(?)";
     @Override
     public List<Customer> findAllCustomer() {
         Connection connection = BaseRepository.getConnectDB();
@@ -136,6 +138,31 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
 
+    public List<Customer> findByCustomer(String key) {
+        Connection connection = BaseRepository.getConnectDB();
+        List<Customer> customers = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_CUSTOMER);
+            preparedStatement.setString(1, key);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("ma_khach_hang");
+                String nameCustomer = rs.getString("ho_ten");
+                String birthday = rs.getString("ngay_sinh");
+                boolean gender = rs.getBoolean("gioi_tinh");
+                String idCard = rs.getString("so_cmnd");
+                String phone = rs.getString("so_dien_thoai");
+                String email = rs.getString("email");
+                String address = rs.getString("dia_chi");
+                int customerTypeId = rs.getInt("ma_loai_khach");
+                boolean status = rs.getBoolean("status");
+                customers.add(new Customer(id, nameCustomer, birthday, gender, idCard, phone, email, address, customerTypeId, status))  ;
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return customers;
+    }
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

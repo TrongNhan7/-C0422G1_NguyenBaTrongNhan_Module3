@@ -19,12 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ContractServlet",urlPatterns = "/contract")
+@WebServlet(name = "ContractServlet", urlPatterns = "/contract")
 public class ContractServlet extends HttpServlet {
     IContractService contractService = new ContractService();
     IEmployeeService employeeService = new EmployeeService();
     IFacilityService facilityService = new FacilityService();
     ICustomerService customerService = new CustomerService();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -40,6 +41,51 @@ public class ContractServlet extends HttpServlet {
             default:
                 listContract(request, response);
                 break;
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "createContract":
+                createContract(request, response);
+                break;
+            case "edit":
+
+                break;
+            default:
+                listContract(request, response);
+                break;
+        }
+    }
+
+    private void createContract(HttpServletRequest request, HttpServletResponse response) {
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
+        double deposit = Double.parseDouble(request.getParameter("deposit"));
+        String facilityId = request.getParameter("facility");
+        String customerId = request.getParameter("customers");
+        String employeeId = request.getParameter("employees");
+        double totalMoney = Double.parseDouble(request.getParameter("total"));
+        Contract contract = new Contract(startDate,endDate,deposit,employeeId,customerId,facilityId,totalMoney);
+        boolean check = contractService.createContract(contract);
+        String mess = null;
+        if (check) {
+            mess = ("Thêm mới thành công");
+        } else {
+            mess = ("Thêm mới thất bại");
+        }
+        request.setAttribute("mess", mess);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/contract/cont-list.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -61,10 +107,6 @@ public class ContractServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
 

@@ -15,4 +15,5 @@ public interface ICustomerRepository {
 
     Customer findByIdCustomer(int id);
 
+    List<Customer> findByCustomer(String key);
 }

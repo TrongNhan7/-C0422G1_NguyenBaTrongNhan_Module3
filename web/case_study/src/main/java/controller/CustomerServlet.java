@@ -2,6 +2,9 @@ package controller;
 
 import model.customer.Customer;
 import model.customer.CustomerType;
+import model.facility.Facility;
+import model.facility.FacilityType;
+import model.facility.RentType;
 import service.ICustomerService;
 import service.ICustomerTypeService;
 import service.impl.CustomerService;
@@ -80,12 +83,38 @@ public class CustomerServlet extends HttpServlet {
                 case "edit":
                     EditCustomer(request, response);
                     break;
+                case "findByKey":
+                    findCustomerByKey(request, response);
+                    break;
                 default:
                     listCustomer(request, response);
                     break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
+        }
+    }
+
+    private void findCustomerByKey(HttpServletRequest request, HttpServletResponse response) {
+        String key = request.getParameter("key");
+        List<Customer> customers = customerService.findByCustomer(key);
+        List<CustomerType> customerTypeList = customerTypeService.selectCustomerTypeList();
+
+        RequestDispatcher dispatcher = null;
+        if (customers.size() == 0) {
+            String mess = "Không tìm thấy";
+            request.setAttribute("mess", mess);
+        } else {
+            request.setAttribute("customerList", customers);
+            request.setAttribute("customerTypeList", customerTypeList);
+        }
+        dispatcher = request.getRequestDispatcher("view/customer/cus-list.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -102,14 +131,24 @@ public class CustomerServlet extends HttpServlet {
         int customerTypeId = Integer.parseInt(request.getParameter("customerTypeId"));
 
         Customer customer = new Customer(id, name, birthday, gender, idCard, phone, email, address, customerTypeId, status);
-        boolean check = customerService.editCustomer(customer);
-        String mess = null;
-        if (check) {
-            mess = ("Edit thành công");
-        } else {
-            mess = ("Edit thất bại");
+        customerService.editCustomer(customer);
+
+        Map<String, String> mapErrors = this.customerService.editCustomer(customer);
+        if (mapErrors.size() > 0) {
+            for (Map.Entry<String, String> entry : mapErrors.entrySet()) {
+                request.setAttribute(entry.getKey(), entry.getValue());
+            }
+
+            try {
+                request.getRequestDispatcher("view/customer/cus-edit.jsp")
+                        .forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        request.setAttribute("mess", mess);
+
         Customer customerNew = customerService.findByIdCustomer(id);
         request.setAttribute("customer", customerNew);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/customer/cus-edit.jsp");

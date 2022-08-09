@@ -34,6 +34,7 @@
             <input type="hidden" name="status" value="<%=customer.isStatus()%>">
 
             <div class="col-md-12">
+                <span class="text-danger">${name}</span>
                 <label for="name" class="form-label">Name Customer</label>
                 <input type="text" class="form-control" id="name" name="nameCustomer"
                        value="<c:out value='<%=customer.getNameCustomer()%>'/>" required>
@@ -45,16 +46,19 @@
             </div>
 
             <div class="col-md-12">
+                <span class="text-danger">${cmnd}</span>
                 <label for="idCard" class="form-label">Id Card </label>
                 <input type="text" class="form-control" id="idCard" name="idCard"
                        value="<c:out value='<%=customer.getIdCard()%>'/>" required>
             </div>
             <div class="col-md-12">
+                <span class="text-danger">${phone}</span>
                 <label for="phone" class="form-label">Phone</label>
                 <input type="number" class="form-control" id="phone" name="phone"
                        value="<c:out value='<%=customer.getPhone()%>'/>" required>
             </div>
             <div class="col-md-12">
+                <span class="text-danger">${email}</span>
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email"
                        value="<c:out value='<%=customer.getEmail()%>'/>" required>

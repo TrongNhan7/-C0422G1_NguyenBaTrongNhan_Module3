@@ -254,6 +254,6 @@
 </footer>
 
 </body>
-<script src="popper.min.js "></script>
+
 <script src="js/bootstrap.min.js "></script>
 </html>

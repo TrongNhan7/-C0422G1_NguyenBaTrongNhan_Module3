@@ -6,15 +6,15 @@ import repository.BaseRepository;
 import repository.IContractRepository;
 import service.ICustomerService;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContractRepository implements IContractRepository {
     private static final String SELECT_ALL_CONTRACT = "call select_all_contract();";
+    private static final String INSERT_CONTRACT = " INSERT INTO hop_dong (ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu)" +
+            " VALUES(?,?,?,?,?,?)";
+
 
     @Override
     public List<Contract> findAllContract() {
@@ -42,6 +42,20 @@ public class ContractRepository implements IContractRepository {
 
     @Override
     public boolean createContract(Contract contract) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CONTRACT);
+            preparedStatement.setDate(1, Date.valueOf(contract.getStartDate()));
+            preparedStatement.setDate(2, Date.valueOf(contract.getEndDate()));
+            preparedStatement.setDouble(3, contract.getDeposit());
+            preparedStatement.setInt(4, Integer.parseInt(contract.getEmployeeId()));
+            preparedStatement.setInt(5, Integer.parseInt(contract.getCustomerId()));
+            preparedStatement.setInt(6, Integer.parseInt(contract.getFacilityId()));
+            int check = preparedStatement.executeUpdate();
+            return (check == 1);
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
         return false;
     }
 

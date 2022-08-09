@@ -5,6 +5,8 @@ import repository.ICustomerRepository;
 import repository.impl.CustomerRepository;
 import service.ICustomerService;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +21,39 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Map<String,String> createCustomer(Customer customer) {
-        Map<String, String> mapErrors = new HashMap<>();
+        Map<String,String> mapErrors = this.validate(customer);
+        if (mapErrors.size() == 0) {
+            this.customerRepository.createCustomer(customer);
+        }
+        return mapErrors;
+    }
 
+    @Override
+    public boolean deleteCustomer(int id) {
+        return customerRepository.deleteCustomer(id);
+    }
+
+    @Override
+    public Map<String,String> editCustomer(Customer customer) {
+        Map<String,String> mapErrors = this.validate(customer);
+        if (mapErrors.size() == 0) {
+            this.customerRepository.editCustomer(customer);
+        }
+        return mapErrors;
+    }
+
+    @Override
+    public Customer findByIdCustomer(int id) {
+        return customerRepository.findByIdCustomer(id);
+    }
+
+    public List<Customer> findByCustomer(String key) {
+        return customerRepository.findByCustomer(key);
+    }
+
+    @Override
+    public Map<String, String> validate(Customer customer) {
+        Map<String, String> mapErrors = new HashMap<>();
         if (!customer.getNameCustomer().isEmpty()) {
             if (!customer.getNameCustomer().matches("[A-Z][a-z]+( [A-Z][a-z]+)*")) {
                 mapErrors.put("name", "Please input right format!");
@@ -30,7 +63,7 @@ public class CustomerService implements ICustomerService {
         }
 
         if (!customer.getPhone().isEmpty()) {
-            if (!customer.getPhone().matches("[0|(84)\\+][90|91][0-9]{7}")) {
+            if (!customer.getPhone().matches("^((090)|(091)|(\\\\(84\\\\)+90)|(\\\\(84\\\\)+91))[0-9]{7}$")) {
                 mapErrors.put("phone", "Please input right format!");
             }
         } else {
@@ -52,27 +85,23 @@ public class CustomerService implements ICustomerService {
         } else {
             mapErrors.put("email", "Please input email!");
         }
-
-        if (mapErrors.size() == 0) {
-            this.customerRepository.createCustomer(customer);
+        LocalDate birdthDay=null;
+        if ((!customer.getBirthday().isEmpty())){
+//            if ((customer.getBirthday()).matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")){
+//                mapErrors.put("birthdayErr","Please input right format!");
+//            }
+            try {
+                birdthDay = LocalDate.parse(customer.getBirthday(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            } catch (Exception exception) {
+                mapErrors.put("birthdayErr", "please input format! (dd/MM/yyyy)");
+            }
+        }else {
+            mapErrors.put("birthdayErr","please input birthday");
         }
 
+
+
         return mapErrors;
-    }
-
-    @Override
-    public boolean deleteCustomer(int id) {
-        return customerRepository.deleteCustomer(id);
-    }
-
-    @Override
-    public boolean editCustomer(Customer customer) {
-        return customerRepository.editCustomer(customer);
-    }
-
-    @Override
-    public Customer findByIdCustomer(int id) {
-        return customerRepository.findByIdCustomer(id);
     }
 
 

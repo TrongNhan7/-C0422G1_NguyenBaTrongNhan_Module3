@@ -39,37 +39,33 @@
                 <table>
                     <input type="hidden" name="id" id="id" value="${facility.id}">
                     <input type="hidden" name="serviceTypeId" id="serviceTypeId" value="${facility.serviceTypeId}">
-<%--                    <input type="text" class="form-control" id="name" name="nameFacility" placeholder="Name Service"--%>
-<%--                           value="${facility.nameService}">--%>
-<%--                    <input type="number" class="form-control" id="area" name="area" placeholder="Area"--%>
-<%--                           value="${facility.area}">--%>
-<%--                    <input type="number" class="form-control" id="cost" name="cost" placeholder="Cost"--%>
-<%--                           value="${facility.cost}">--%>
-<%--                    <input type="text" class="form-control" id="max_people" name="max_people" placeholder="Max people"--%>
-<%--                           value="${facility.maxPeople}">--%>
-<%--                    <input type="text" class="form-control" id="standard_room" name="standard_room" placeholder="Standard room"--%>
-<%--                           value="${facility.standardRoom}">--%>
-<%--                    <input type="text" class="form-control" id="description_other_convenience"--%>
-<%--                           name="description_other_convenience" placeholder="Convenience"--%>
-<%--                           value="${facility.descriptionOtherConvenience}">--%>
-<%--                    <input type="number" class="form-control" id="pool_area" name="pool_area" placeholder="Pool Area"--%>
-<%--                           value="${facility.areaPool}">--%>
-<%--                    <input type="number" class="form-control" id="number_of_floors" name="number_of_floors" placeholder="Number of floors"--%>
-<%--                           value="${facility.numberOfFloors}">--%>
-<%--                    <input type="text" class="form-control" id="facility_free" name="facility_free" placeholder="Facility Free"--%>
-<%--                           value="${facility.serviceFree}">--%>
-<%--                    <select name="rent_type_id" id="rent_type_id" >--%>
-<%--                        <option value="none">Rent Type</option>--%>
-<%--                        <option value="1">Year</option>--%>
-<%--                        <option value="2">Month</option>--%>
-<%--                        <option value="3">Day</option>--%>
-<%--                        <option value="4">Hour</option>--%>
-<%--                    </select>--%>
-                    <div class="col-md-12">
-                        <label for="name" class="form-label">Name Customer</label>
-                        <input type="text" class="form-control" id="name" name="nameCustomer"
-                               value="<c:out value='<%=customer.getNameCustomer()%>'/>" required>
-                    </div>
+                    <input type="text" class="form-control" id="name" name="nameFacility" placeholder="Name Service"
+                           value="${facility.nameService}">
+                    <input type="number" class="form-control" id="area" name="area" placeholder="Area"
+                           value="${facility.area}">
+                    <input type="number" class="form-control" id="cost" name="cost" placeholder="Cost"
+                           value="${facility.cost}">
+                    <input type="text" class="form-control" id="max_people" name="max_people" placeholder="Max people"
+                           value="${facility.maxPeople}">
+                    <input type="text" class="form-control" id="standard_room" name="standard_room" placeholder="Standard room"
+                           value="${facility.standardRoom}">
+                    <input type="text" class="form-control" id="description_other_convenience"
+                           name="description_other_convenience" placeholder="Convenience"
+                           value="${facility.descriptionOtherConvenience}">
+                    <input type="number" class="form-control" id="pool_area" name="pool_area" placeholder="Pool Area"
+                           value="${facility.areaPool}">
+                    <input type="number" class="form-control" id="number_of_floors" name="number_of_floors" placeholder="Number of floors"
+                           value="${facility.numberOfFloors}">
+                    <input type="text" class="form-control" id="facility_free" name="facility_free" placeholder="Facility Free"
+                           value="${facility.serviceFree}">
+                    <select name="rent_type_id" id="rent_type_id" >
+                        <option value="none">Rent Type</option>
+                        <option value="1">Year</option>
+                        <option value="2">Month</option>
+                        <option value="3">Day</option>
+                        <option value="4">Hour</option>
+                    </select>
+                    
                     <div class="col-12 mt-3" align="center">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
